@@ -162,13 +162,28 @@
   <data name="ItemName.Text" xml:space="preserve">
     <value>Ingredients name</value>
   </data>
+  <data name="Jar" xml:space="preserve">
+    <value>Jar</value>
+  </data>
+  <data name="Jar.Text" xml:space="preserve">
+    <value>Jar</value>
+  </data>
+  <data name="Piece" xml:space="preserve">
+    <value>Piece</value>
+  </data>
+  <data name="Piece.Text" xml:space="preserve">
+    <value>Pcs</value>
+  </data>
+  <data name="Portion.Text" xml:space="preserve">
+    <value>Portion</value>
+  </data>
   <data name="Protein.Text" xml:space="preserve">
     <value>Protein</value>
   </data>
   <data name="Search.Text" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="SearchCriteria.Content" xml:space="preserve">
+  <data name="SearchCriteria.Text" xml:space="preserve">
     <value>Enter your search criteria here</value>
   </data>
   <data name="SearchError.Text" xml:space="preserve">
@@ -177,8 +192,23 @@
   <data name="SearchHelp.Text" xml:space="preserve">
     <value>On search page you can search for ingrediens and add them to the selected day. Ingredients are added to a cloud service so they can be used by other users of the app too.</value>
   </data>
+  <data name="Tblsp" xml:space="preserve">
+    <value>Tblsp</value>
+  </data>
+  <data name="Tblsp.Text" xml:space="preserve">
+    <value>Tblsp</value>
+  </data>
   <data name="TextBoxSearch.Text" xml:space="preserve">
     <value />
+  </data>
+  <data name="Tsp" xml:space="preserve">
+    <value>Tsp</value>
+  </data>
+  <data name="Tsp.Text" xml:space="preserve">
+    <value>Tsp</value>
+  </data>
+  <data name="Weights.Text" xml:space="preserve">
+    <value>weights</value>
   </data>
   <data name="Welcome.Text" xml:space="preserve">
     <value>This app was developed to help keeping a food diary. To stand out from collections of thousands of other similar apps, CalorieCounter! has left out recommendations of losing weight and focused on simple arithmetics of calorie counting. This makes the app applicaple for both needs of losing and gaining weight. CalorieCounter! adds up the calories of a day and saves them into a database where you can easily browse your diary. On diary-page you can also see the nutrition facts of the intake energy per day. CalorieCounter! makes it easy to add new ingredients into a cloud service so you don't have to tie yourself to using an insufficient database.</value>

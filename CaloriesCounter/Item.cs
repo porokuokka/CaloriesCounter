@@ -146,7 +146,7 @@ namespace CaloriesCounter
                 if (help == String.Empty || value == null)
                 {
                     value = "";
-                    throw new Exception("Name must contain some letters");
+                  //  throw new Exception("Name must contain some letters");
                 }
 
                 name = value;
@@ -165,7 +165,7 @@ namespace CaloriesCounter
                 if (help == String.Empty || value == null)
                 {
                     value = "";
-                    throw new Exception("Portion value is empty");
+                    //throw new Exception("Portion value is empty");
                 }
 
                 portion = value;

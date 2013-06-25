@@ -165,13 +165,28 @@
   <data name="ItemNameHelp.Text" xml:space="preserve">
     <value>Kirjoita tähän raaka-aineen nimi</value>
   </data>
+  <data name="Jar" xml:space="preserve">
+    <value>Jar</value>
+  </data>
+  <data name="Jar.Text" xml:space="preserve">
+    <value>Jar</value>
+  </data>
+  <data name="Piece" xml:space="preserve">
+    <value>kpl</value>
+  </data>
+  <data name="Piece.Text" xml:space="preserve">
+    <value>kpl</value>
+  </data>
+  <data name="Portion.Text" xml:space="preserve">
+    <value>Annos</value>
+  </data>
   <data name="Protein.Text" xml:space="preserve">
     <value>Proteiinia</value>
   </data>
   <data name="Search.Text" xml:space="preserve">
     <value>Hae</value>
   </data>
-  <data name="SearchCriteria.Content" xml:space="preserve">
+  <data name="SearchCriteria.Text" xml:space="preserve">
     <value>Kirjoita hakusanat tähän</value>
   </data>
   <data name="SearchError.Text" xml:space="preserve">
@@ -179,6 +194,21 @@
   </data>
   <data name="SearchHelp.Text" xml:space="preserve">
     <value>Hae-sivulla voit hakea ruoka-aineita, tarkastella niiden koostumusta ja lisätä niitä valitulle päivälle ruokapäiväkirjaan. Ruoka-aineet lisätään pilvipalvelussa sijaitsevaan tietokantaan, jotta muutkin voivat käyttää niitä ruokapäiväkirjassaan.</value>
+  </data>
+  <data name="Tblsp" xml:space="preserve">
+    <value>rkl</value>
+  </data>
+  <data name="Tblsp.Text" xml:space="preserve">
+    <value>rkl</value>
+  </data>
+  <data name="Tsp" xml:space="preserve">
+    <value>tl</value>
+  </data>
+  <data name="Tsp.Text" xml:space="preserve">
+    <value>rl</value>
+  </data>
+  <data name="Weights.Text" xml:space="preserve">
+    <value>painaa</value>
   </data>
   <data name="Welcome.Text" xml:space="preserve">
     <value>Tämä sovellus on suunniteltu oman ruokapäiväkirjan pitämisen helpottamiseksi ja erotukseksi tuhansista samanlaisista sovelluksista, Kalorilaskuri! on jättänyt ylimääräiset laihdutus-suositukset ja ohjeistukset pois. Näin laskuri on kätevä myös henkilöille, joiden tavoitteena on saada lisää massaa. Raaka-aineita on helppo lisätä, joten valmiiseen, vajavaiseen tietokantaan ei tarvitse taipua. Kalorilaskuri! laskee kalorisi päivittäin yhteen ja tallentaa ne päiväkirjaan, jota voit tarkastella ja muokata.</value>

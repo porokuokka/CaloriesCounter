@@ -52,7 +52,7 @@
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="-5.293"/>
                 </Border.RenderTransform>
-                <Grid x:Name="GridCreateNew" Tapped="GridDiary_Tapped">
+                <Grid x:Name="GridCreateNew" Tapped="GridCreateNew_Tapped">
                     <TextBlock  x:Name="TextBlockCreateNew" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Style="{StaticResource CaptionTextStyle}" Margin="22,20,0,0">
             <Run x:Uid="Create" Text="Luo uusi raaka-aine"></Run>
                     </TextBlock>

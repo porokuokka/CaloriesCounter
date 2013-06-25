@@ -12,11 +12,12 @@
 
         <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="96,72,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource ApplicationHeader}" Height="52" Width="564"/>
         <Grid x:Name="NavigationGrid" Margin="10,10,-10,-10">
-            <Border x:Name="HomeBorder" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="661.073,37.601,573.337,651.809" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+
+            <Border x:Name="HomeBorder" Tapped="HomeBorder_Tapped" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="661.073,37.601,573.337,651.809" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="-6.817"/>
                 </Border.RenderTransform>
-                <Grid Tapped="HomeBorder_Tapped" Margin="-1,9,0.59,-9.41" >
+                <Grid Margin="-1,9,0.59,-9.41" >
                     <TextBlock x:Uid="Home" TextWrapping="Wrap" Text="Alkuun" Style="{StaticResource Navigation}" Margin="4,18,-1,27" Height="32" Width="127"/>
                 </Grid>
             </Border>
@@ -27,7 +28,7 @@
                 </Border.RenderTransform>
                 <TextBlock x:Uid="Diary" TextWrapping="Wrap" Text="Päiväkirja" Style="{StaticResource Navigation}" Height="37" Width="138" Margin="2,24,-1.128,16.72"/>
             </Border>
-            <Border CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="1093.866,30.269,91.345,651.724" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border x:Name="CreateNewBorder" Tapped="CreateNewBorder_Tapped" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="1093.866,30.269,91.345,651.724" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="3.852"/>
                 </Border.RenderTransform>

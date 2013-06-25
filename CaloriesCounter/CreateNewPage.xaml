@@ -8,11 +8,14 @@
     mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.Resources>
+            <local:StringToFloatConverter x:Key="FloatConverter" />
+        </Grid.Resources>
         <TextBlock x:Uid="CreateNew" HorizontalAlignment="Left" Margin="97,161,0,0" TextWrapping="Wrap" Text="Luo uusi raaka-aine" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
 
         <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="96,72,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource ApplicationHeader}" Height="52" Width="564"/>
         <Grid x:Name="NavigationGrid" Margin="10,10,-10,-10">
-            <Border x:Name="HomeBorder" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="661.073,37.601,573.337,651.809" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border x:Name="HomeBorder" Tapped="HomeBorder_Tapped" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="661.073,37.601,573.337,651.809" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="-6.817"/>
                 </Border.RenderTransform>
@@ -31,16 +34,73 @@
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="3.852"/>
                 </Border.RenderTransform>
-                <TextBlock x:Uid="Create" HorizontalAlignment="Left" Margin="2,19,0,0" TextWrapping="Wrap" Text="Luo uusi raaka-aine" VerticalAlignment="Top" Style="{StaticResource Navigation}" Height="61" Width="176"/>
+                <TextBlock x:Uid="Create" HorizontalAlignment="Left" Margin="2,19,0,0" TextWrapping="Wrap" Text="Luo uusi raaka-aine" VerticalAlignment="Top" Style="{StaticResource NavigationSelected}" Height="61" Width="176"/>
             </Border>
-            <Border CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="956.716,40.162,284.539,647.002" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border x:Name="SearchBorder" Tapped="SearchBorder_Tapped"  CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="956.716,40.162,284.539,647.002" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="-3.821"/>
                 </Border.RenderTransform>
-                <TextBlock x:Uid="Search" TextWrapping="Wrap" Text="Hae" Style="{StaticResource NavigationSelected}" RenderTransformOrigin="1.143,0.55" Margin="2,27,0.745,0.836" Width="120"/>
+                <TextBlock x:Uid="Search" TextWrapping="Wrap" Text="Hae" Style="{StaticResource Navigation}" RenderTransformOrigin="1.143,0.55" Margin="0,27,2.745,31.836" Width="120"/>
             </Border>
-            <TextBlock x:Uid="ItemName" HorizontalAlignment="Left" Margin="93,254,0,0" TextWrapping="Wrap" Text="Raaka-aineen nimi" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
-            <TextBox x:Uid="ItemNameHelp" HorizontalAlignment="Left" Margin="92,306,0,0" TextWrapping="Wrap" Text="Kirjoita raaka-aineen nimi tähän" VerticalAlignment="Top" Width="440"/>
+            <Button x:Uid="Add" x:Name="AddIngredient" Content="Lisää" Click="AddIngredient_Click"   HorizontalAlignment="Left" Margin="971.939,591.95,0,0" VerticalAlignment="Top" Template="{StaticResource ButtonControlTemplate1}" Height="88" Width="336.714" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Button.RenderTransform>
+                    <CompositeTransform Rotation="-3.421"/>
+                </Button.RenderTransform>
+            </Button>
+            <TextBlock x:Name="Debug" HorizontalAlignment="Left" Margin="574,602,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="71" Width="231" Style="{StaticResource HeaderTextStyle}"/>
         </Grid>
+        <TextBlock x:Uid="ItemName" HorizontalAlignment="Left" Margin="93,254,0,0" TextWrapping="Wrap" Text="Raaka-aineen nimi" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+        <TextBox GotFocus="TextBox_GotFocus" HorizontalAlignment="Left" Margin="92,306,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Width="440"/>
+        <Border BorderThickness="1" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" CornerRadius="10,10,10,10" Margin="88.309,379.877,870.309,21.877" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border.RenderTransform>
+                <CompositeTransform Rotation="-2.229"/>
+            </Border.RenderTransform>
+            <Grid x:Name="GridNutrition" Margin="9,9,-0.618,9.246">
+                <TextBlock x:Uid="100gInc" HorizontalAlignment="Left" Margin="44,18,0,0" TextWrapping="Wrap" Text="100g tuotetta sisältää" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+
+                <TextBlock x:Uid="Carbohydrates" HorizontalAlignment="Left" Margin="248,90,0,0" TextWrapping="Wrap" Text="Hiilihydraatteja" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+                <TextBox GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="44,96,0,0" TextWrapping="Wrap" Text="{Binding Carbohydrates, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="162"/>
+                <TextBlock HorizontalAlignment="Left" Margin="222,90,0,0" TextWrapping="Wrap" Text="g" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}" Width="13"/>
+
+                <TextBlock x:Uid="Protein" HorizontalAlignment="Left" Margin="248,162,0,0" TextWrapping="Wrap" Text="Proteiinia" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+                <TextBox GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="44,164,0,0" TextWrapping="Wrap" Text="{Binding Protein, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="162"/>
+                <TextBlock HorizontalAlignment="Left" Margin="222,158,0,0" TextWrapping="Wrap" Text="g" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+
+                <TextBox GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="44,292,0,0" TextWrapping="Wrap" Text="{Binding Fat, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="162"/>
+                <TextBlock x:Uid="Fat" HorizontalAlignment="Left" Margin="248,290,0,0" TextWrapping="Wrap" Text="Rasvaa" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+                <TextBlock HorizontalAlignment="Left" Margin="220,288,0,0" TextWrapping="Wrap" Text="g" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+
+                <TextBox GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="44,222,0,0" TextWrapping="Wrap" Text="{Binding Fibre, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="162"/>
+                <TextBlock HorizontalAlignment="Left" Margin="220,215,0,0" TextWrapping="Wrap" Text="g" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+                <TextBlock x:Uid="Fat" HorizontalAlignment="Left" Margin="250,218,0,0" TextWrapping="Wrap" Text="Kuitua" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+            </Grid>
+        </Border>
+
+        <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" Margin="788,242,256,228" RenderTransformOrigin="0.5,0.5">
+            <Border.RenderTransform>
+                <CompositeTransform Rotation="1.266"/>
+            </Border.RenderTransform>
+            <Grid x:Name="GridPortion" Margin="9,9,-9,-9">
+                <TextBlock x:Uid="Portion" HorizontalAlignment="Left" Margin="29,25,0,0" TextWrapping="Wrap" Text="Annos" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}"/>
+                <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" Margin="28,78,38,152">
+                    <FlipView x:Name="PortionSelector" HorizontalAlignment="Left" Margin="0,0,0,-1" VerticalAlignment="Top" Width="243" Height="65">
+                        <FlipViewItem Width="243">
+                            <TextBlock x:Uid="Piece" Text="kpl" Style="{StaticResource SubheaderTextStyle}" VerticalAlignment="Center" TextAlignment="Center" Margin="0,7,-6,16" Height="36" />
+                        </FlipViewItem>
+                        <FlipViewItem>
+                            <TextBlock x:Uid="Tblsp" Text="rkl" Style="{StaticResource SubheaderTextStyle}" VerticalAlignment="Center" TextAlignment="Center" Margin="0,7,0,16" Height="36" />
+                        </FlipViewItem>
+                        <FlipViewItem>
+                            <TextBlock x:Uid="Tsp" Text="tl" Style="{StaticResource SubheaderTextStyle}" VerticalAlignment="Center" TextAlignment="Center" Margin="0,7,0,16" Height="36" />
+                        </FlipViewItem>
+                        <FlipViewItem>
+                            <TextBlock x:Uid="Jar" Text="prk" Style="{StaticResource SubheaderTextStyle}" VerticalAlignment="Center" TextAlignment="Center" Margin="0,7,0,16" Height="36" />
+                        </FlipViewItem>
+                    </FlipView>
+                </Border>
+                <TextBlock x:Uid="Weights" HorizontalAlignment="Left" Margin="29,165,0,0" TextWrapping="Wrap" Text="painaa" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}"/>
+                <TextBox GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="28,224,0,0" TextWrapping="Wrap" Text="{Binding PortionWeight, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="126"/>
+            </Grid>
+        </Border>
     </Grid>
 </Page>

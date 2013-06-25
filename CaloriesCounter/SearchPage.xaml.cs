@@ -100,6 +100,7 @@ namespace CaloriesCounter
             GridItemDetails.Visibility = Visibility.Collapsed;
         }
 
+        #region navigation
         private void HomeBorder_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(MainPage));
@@ -109,6 +110,13 @@ namespace CaloriesCounter
         {
 
         }
+
+        private void CreateNewBorder_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateNewPage));
+        }
+
+        #endregion
 
         private AddControl add;
 
@@ -131,6 +139,7 @@ namespace CaloriesCounter
 
         private void TextBoxSearch_GotFocus(object sender, RoutedEventArgs e)
         {
+            (sender as TextBox).SelectAll();
             GridItemDetails.Visibility = Visibility.Collapsed;
             GridAdd.Children.Remove(add);
             add = null;
@@ -138,6 +147,8 @@ namespace CaloriesCounter
             search = null;
             ListViewItems.ItemsSource = null;
         }
+
+
 
     }
 }

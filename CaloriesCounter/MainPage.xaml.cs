@@ -35,6 +35,8 @@ namespace CaloriesCounter
         {
         }
 
+        #region navigation
+
         private void TextBlockSearch_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(SearchPage));
@@ -44,5 +46,12 @@ namespace CaloriesCounter
         {
 
         }
+
+        private void GridCreateNew_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateNewPage));
+        }
+
+        #endregion
     }
 }

@@ -47,11 +47,18 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            
+
             <ControlTemplate x:Key="ButtonControlTemplate" TargetType="Button">
                 <Border BorderThickness="1" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" CornerRadius="10,10,10,10" Margin="0,0,64,-8">
-                <Grid HorizontalAlignment="Center" Margin="5,5,5,5">
+                    <Grid HorizontalAlignment="Center" Margin="5,5,5,5">
                         <ContentPresenter />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+            <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="Button">
+                <Border BorderThickness="1" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" CornerRadius="10,10,10,10" Margin="0,0,64,-8">
+                    <Grid HorizontalAlignment="Center" Margin="48,9,40.714,1" Width="182">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Light" />
                     </Grid>
                 </Border>
             </ControlTemplate>
