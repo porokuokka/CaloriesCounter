@@ -162,9 +162,6 @@
   <data name="ItemName.Text" xml:space="preserve">
     <value>Raaka-aineen nimi</value>
   </data>
-  <data name="ItemNameHelp.Text" xml:space="preserve">
-    <value>Kirjoita tähän raaka-aineen nimi</value>
-  </data>
   <data name="Jar" xml:space="preserve">
     <value>Jar</value>
   </data>

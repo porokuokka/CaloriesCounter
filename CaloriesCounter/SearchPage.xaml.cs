@@ -108,14 +108,13 @@ namespace CaloriesCounter
 
         private void DiaryBorder_Tapped(object sender, TappedRoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(DiaryPage));
         }
 
         private void CreateNewBorder_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CreateNewPage));
         }
-
         #endregion
 
         private AddControl add;

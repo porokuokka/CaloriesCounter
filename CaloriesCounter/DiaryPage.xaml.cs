@@ -19,11 +19,12 @@ namespace CaloriesCounter
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class DiaryPage : Page
     {
-        public MainPage()
+        public DiaryPage()
         {
             this.InitializeComponent();
+            DatePickerDiary.Date = DateTime.Today;
         }
 
         /// <summary>
@@ -35,23 +36,31 @@ namespace CaloriesCounter
         {
         }
 
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as TextBox).SelectAll();
+        }
+
         #region navigation
 
-        private void TextBlockSearch_Tapped(object sender, TappedRoutedEventArgs e)
+
+        private void HomeBorder_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        private void SearchBorder_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(SearchPage));
         }
 
-        private void GridDiary_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(DiaryPage));
-        }
-
-        private void GridCreateNew_Tapped(object sender, TappedRoutedEventArgs e)
+        private void CreateNewBorder_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CreateNewPage));
         }
 
         #endregion
+
+
     }
 }

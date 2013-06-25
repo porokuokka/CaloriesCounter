@@ -62,13 +62,19 @@ namespace CaloriesCounter
             this.Frame.Navigate(typeof(SearchPage));
         }
 
+
+        private void DiaryBorder_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DiaryPage));
+        }
+
         #endregion
 
         private void AddIngredient_Click(object sender, RoutedEventArgs e)
         {
             newItem.Portion = getPortion();
             newItem.countPortion();
-            Debug.Text = newItem.Name;
+            //Debug.Text = newItem.PortionCalories.ToString();
             InsertItem(newItem);
         }
 
@@ -109,5 +115,6 @@ namespace CaloriesCounter
             this.GridPortion.DataContext = newItem;
             LayoutRoot.DataContext = newItem;
         }
+
     }
 }
