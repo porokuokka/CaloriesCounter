@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="CaloriesCounter.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CaloriesCounter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+
+
+        <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="52,72,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource ApplicationHeader}" Height="52" Width="482"/>
+
+        <Grid>
+            <TextBlock x:Uid="WelcomeHeader" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tervetuloa käyttämään kalorilaskuria!" VerticalAlignment="Top" Height="83" Width="491" Style="{StaticResource SubheaderTextStyle}" Margin="112,148,0,0"/>
+            <TextBlock x:Uid="Welcome" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tämä on hieno juttu." VerticalAlignment="Top" Height="557" Width="419" Style="{StaticResource SubheaderTextStyle}" Margin="114,194,0,0"/>
+        </Grid>
+
+        <!--Scrollviewer not in use while having only 3 items on it, add an indicator for the user if adding new features-->
+        <!--<ScrollViewer VerticalScrollBarVisibility="Hidden">-->
+        <Grid x:Name="Pages">
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="654,146,228,458" CornerRadius="10,10,10,10" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="-6.037"/>
+                </Border.RenderTransform>
+                <Grid Tapped="TextBlockSearch_Tapped">
+                    <TextBlock  x:Name="TextBlockSearch" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Style="{StaticResource CaptionTextStyle}" Margin="18,18,0,0">
+            <Run x:Uid="Search" Text="Hae"></Run>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Style="{StaticResource CaptionTextStyle}" Margin="14,54,10,4">
+            <Run x:Uid="SearchHelp" Text="Hae-sivulla voit hakea ruoka-aineita, tarkastella niiden koostumusta ja lisätä niitä valitulle päivälle ruokapäiväkirjaan. Ruoka-aineet lisätään pilvipalvelussa sijaitsevaan tietokantaan, jotta muutkin voivat käyttää niitä ruokapäiväkirjassaan."></Run>
+                    </TextBlock>
+                </Grid>
+            </Border>
+
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="654,338,228,266" CornerRadius="10,10,10,10" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="4.693"/>
+                </Border.RenderTransform>
+                <Grid x:Name="GridDiary" Tapped="GridDiary_Tapped" Margin="-9,9,9,-9">
+                    <TextBlock  x:Name="TextBlockDiary" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Style="{StaticResource CaptionTextStyle}" Margin="30,14,0,0">
+            <Run x:Uid="Diary" Text="Päiväkirja"></Run>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Style="{StaticResource CaptionTextStyle}" Margin="30,52,8,6">
+            <Run x:Uid="DiaryHelp" Text="Hae-sivulla voit hakea ruoka-aineita, tarkastella niiden koostumusta ja lisätä niitä valitulle päivälle ruokapäiväkirjaan. Ruoka-aineet lisätään pilvipalvelussa sijaitsevaan tietokantaan, jotta muutkin voivat käyttää niitä ruokapäiväkirjassaan."></Run>
+                    </TextBlock>
+                </Grid>
+            </Border>
+
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="654,520,228,84" CornerRadius="10,10,10,10" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="-5.293"/>
+                </Border.RenderTransform>
+                <Grid x:Name="GridCreateNew" Tapped="GridDiary_Tapped">
+                    <TextBlock  x:Name="TextBlockCreateNew" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Style="{StaticResource CaptionTextStyle}" Margin="22,20,0,0">
+            <Run x:Uid="CreateNew" Text="Luo uusi raaka-aine"></Run>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Style="{StaticResource CaptionTextStyle}" Margin="20,62,4,-4">
+            <Run x:Uid="CreateNewHelp" Text="Hae-sivulla voit hakea ruoka-aineita, tarkastella niiden koostumusta ja lisätä niitä valitulle päivälle ruokapäiväkirjaan. Ruoka-aineet lisätään pilvipalvelussa sijaitsevaan tietokantaan, jotta muutkin voivat käyttää niitä ruokapäiväkirjassaan."></Run>
+                    </TextBlock>
+                </Grid>
+            </Border>
+        </Grid>
+        <!--</ScrollViewer>-->
+    </Grid>
+</Page>
