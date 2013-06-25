@@ -16,18 +16,18 @@
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="Navigation" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
                 <Setter Property="FontSize" Value="20"/>
-                <Setter Property="Foreground" Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
                 <Setter Property="Margin" Value="Auto"></Setter>
                 <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="TextAlignment" Value="Center" />
-                <Setter Property="Height" Value="Auto" />
-                <Setter Property="MaxHeight" Value="20" />
                 <Setter Property="TextWrapping" Value="Wrap" />
             </Style>
             <Style x:Key="NavigationSelected" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
                 <Setter Property="FontSize" Value="20"/>
-                <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ApplicationSecondaryForegroundThemeBrush}"/>
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="TextAlignment" Value="Center" />
             </Style>
             <Style x:Key="WelcomeTextStyle" TargetType="TextBlock" BasedOn="{StaticResource SubheaderTextStyle}">
                 <Setter Property="TextWrapping" Value="Wrap"/>
@@ -40,14 +40,21 @@
                 <Setter Property="FontStyle" Value="Italic" />
                 <Setter Property="FontWeight" Value="Light"/>
                 <Setter Property="LineHeight" Value="30"/>
-                <Setter Property="TextAlignment" Value="Center" />
-                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="TextAlignment" Value="Left" />
                 <Setter Property="RenderTransform">
                     <Setter.Value>
                         <TranslateTransform X="-1" Y="6"/>
                     </Setter.Value>
                 </Setter>
             </Style>
+            
+            <ControlTemplate x:Key="ButtonControlTemplate" TargetType="Button">
+                <Border BorderThickness="1" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" CornerRadius="10,10,10,10" Margin="0,0,64,-8">
+                <Grid HorizontalAlignment="Center" Margin="5,5,5,5">
+                        <ContentPresenter />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
 
         </ResourceDictionary>
     </Application.Resources>

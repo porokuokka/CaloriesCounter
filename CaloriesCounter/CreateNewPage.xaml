@@ -1,0 +1,46 @@
+﻿<Page
+    x:Class="CaloriesCounter.CreateNewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CaloriesCounter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock x:Uid="CreateNew" HorizontalAlignment="Left" Margin="97,161,0,0" TextWrapping="Wrap" Text="Luo uusi raaka-aine" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
+
+        <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="96,72,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource ApplicationHeader}" Height="52" Width="564"/>
+        <Grid x:Name="NavigationGrid" Margin="10,10,-10,-10">
+            <Border x:Name="HomeBorder" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="661.073,37.601,573.337,651.809" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="-6.817"/>
+                </Border.RenderTransform>
+                <Grid Margin="-1,9,0.59,-9.41" >
+                    <TextBlock x:Uid="Home" TextWrapping="Wrap" Text="Alkuun" Style="{StaticResource Navigation}" Margin="4,18,-1,27" Height="32" Width="127"/>
+                </Grid>
+            </Border>
+
+            <Border x:Name="DiaryBorder" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="807.561,39.287,417.567,648.993" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="3.771"/>
+                </Border.RenderTransform>
+                <TextBlock x:Uid="Diary" TextWrapping="Wrap" Text="Päiväkirja" Style="{StaticResource Navigation}" Height="37" Width="138" Margin="2,24,-1.128,16.72"/>
+            </Border>
+            <Border CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="1093.866,30.269,91.345,651.724" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="3.852"/>
+                </Border.RenderTransform>
+                <TextBlock x:Uid="Create" HorizontalAlignment="Left" Margin="2,19,0,0" TextWrapping="Wrap" Text="Luo uusi raaka-aine" VerticalAlignment="Top" Style="{StaticResource Navigation}" Height="61" Width="176"/>
+            </Border>
+            <Border CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="956.716,40.162,284.539,647.002" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="-3.821"/>
+                </Border.RenderTransform>
+                <TextBlock x:Uid="Search" TextWrapping="Wrap" Text="Hae" Style="{StaticResource NavigationSelected}" RenderTransformOrigin="1.143,0.55" Margin="2,27,0.745,0.836" Width="120"/>
+            </Border>
+            <TextBlock x:Uid="ItemName" HorizontalAlignment="Left" Margin="93,254,0,0" TextWrapping="Wrap" Text="Raaka-aineen nimi" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+            <TextBox x:Uid="ItemNameHelp" HorizontalAlignment="Left" Margin="92,306,0,0" TextWrapping="Wrap" Text="Kirjoita raaka-aineen nimi tähän" VerticalAlignment="Top" Width="440"/>
+        </Grid>
+    </Grid>
+</Page>

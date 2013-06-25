@@ -7,30 +7,114 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Uid="Search" HorizontalAlignment="Left" Margin="87,135,0,0" TextWrapping="Wrap" Text="Hae" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
+    <Grid x:Name="LayoutRoot" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock x:Uid="Search" HorizontalAlignment="Left" Margin="97,161,0,0" TextWrapping="Wrap" Text="Hae" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
 
-        <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="83,48,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource PageHeaderTextStyle}"/>
+        <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="96,72,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource ApplicationHeader}" Height="52" Width="564"/>
         <Grid x:Name="NavigationGrid" Margin="10,10,-10,-10">
-            <Border x:Name="HomeBorder" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="743.073,25.601,491.337,663.809" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border x:Name="HomeBorder" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="661.073,37.601,573.337,651.809" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="-6.817"/>
                 </Border.RenderTransform>
                 <Grid Tapped="HomeBorder_Tapped" Margin="-1,9,0.59,-9.41" >
-                    <TextBlock x:Uid="Home" TextWrapping="Wrap" Text="Alkuun" Style="{StaticResource Navigation}" Margin="4,0,-1.41,26.59" Height="50" Width="127"/>
+                    <TextBlock x:Uid="Home" TextWrapping="Wrap" Text="Alkuun" Style="{StaticResource Navigation}" Margin="4,18,-1,27" Height="32" Width="127"/>
                 </Grid>
             </Border>
 
-            <Border x:Name="DiaryBorder" Tapped="DiaryBorder_Tapped" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="885.561,23.287,339.567,664.993" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border x:Name="DiaryBorder" Tapped="DiaryBorder_Tapped" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="807.561,39.287,417.567,648.993" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="3.771"/>
                 </Border.RenderTransform>
-                <TextBlock x:Uid="Diary" TextWrapping="Wrap" Text="Päiväkirja" Style="{StaticResource Navigation}" Height="55" Width="160" Margin="-4,6,-17.128,16.72"/>
+                <TextBlock x:Uid="Diary" TextWrapping="Wrap" Text="Päiväkirja" Style="{StaticResource Navigation}" Height="37" Width="138" Margin="2,24,-1.128,16.72"/>
             </Border>
-            <Border CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="480,164,660,486">
-                <TextBlock x:Uid="Create" HorizontalAlignment="Left" Margin="28,24,0,0" TextWrapping="Wrap" Text="Luo uusi raaka-aine" VerticalAlignment="Top" Style="{StaticResource Navigation}" Height="70" Width="182"/>
+            <Border CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="1093.866,30.269,91.345,651.724" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="3.852"/>
+                </Border.RenderTransform>
+                <TextBlock x:Uid="Create" HorizontalAlignment="Left" Margin="2,19,0,0" TextWrapping="Wrap" Text="Luo uusi raaka-aine" VerticalAlignment="Top" Style="{StaticResource Navigation}" Height="61" Width="176"/>
             </Border>
-            <TextBlock x:Uid="Search" HorizontalAlignment="Left" Margin="1060,54,0,0" TextWrapping="Wrap" Text="Hae" VerticalAlignment="Top" Style="{StaticResource NavigationSelected}"/>
+            <Border CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="956.716,40.162,284.539,647.002" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="-3.821"/>
+                </Border.RenderTransform>
+                <TextBlock x:Uid="Search" TextWrapping="Wrap" Text="Hae" Style="{StaticResource NavigationSelected}" RenderTransformOrigin="1.143,0.55" Margin="2,27,0.745,0.836" Width="120"/>
+            </Border>
+            <TextBox x:Name="TextBoxSearch" x:Uid="SearchCriteria" GotFocus="TextBoxSearch_GotFocus" KeyDown="TextBoxSearch_KeyDown" HorizontalAlignment="Left" Margin="90,232,0,0" TextWrapping="Wrap" Text="Kirjoita hakusanat täähän" VerticalAlignment="Top" Width="350" Height="34"/>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Left" Height="446" Margin="90,312,0,0" VerticalAlignment="Top" Width="350">
+                <ListView x:Name="ListViewItems" SelectionChanged="ListViewItems_SelectionChanged" Height="440" Width="350">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" Margin="10,10,10,10" TextWrapping="Wrap"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" Margin="652.293,186.638,87.586,27.327" BorderThickness="0" CornerRadius="10,10,10,10" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <Border.RenderTransform>
+                    <CompositeTransform Rotation="0.74"/>
+                </Border.RenderTransform>
+                <Grid x:Name="GridItemDetails" HorizontalAlignment="Left" Height="566"  VerticalAlignment="Top" Width="615">
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" Margin="18,12,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}" Width="595" Height="77"/>
+                        <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" CornerRadius="10,10,10,10" BorderThickness="1" Margin="386,101,20,240" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <CompositeTransform Rotation="4.343"/>
+                            </Border.RenderTransform>
+                            <Grid Margin="0,0,-1,0">
+
+                                <TextBlock x:Uid="100gInc" Text="100g tuotetta sisältää" Margin="10,2,4,180" Style="{StaticResource TitleTextStyle}" />
+                                <TextBlock Style="{StaticResource BasicTextStyle}" Margin="0,60,-4,135" HorizontalAlignment="Right" Width="196">
+                        			<Run Text="{Binding Carbohydrates}"/>
+                        			<Run Text="g "/>
+                        			<Run x:Uid="Carbohydrates" Text="Hiilihydraatteja"/>
+                                </TextBlock>
+                                <TextBlock Margin="16,93,0,102" Style="{StaticResource BasicTextStyle}">
+                        			<Run Text="{Binding Protein}"/>
+                        			<Run Text="g "/>
+                        			<Run x:Uid="Protein" Text="Proteiinia"/>
+                                </TextBlock>
+                                <TextBlock Margin="16,126,0,76" Style="{StaticResource BasicTextStyle}">
+                        			<Run Text="{Binding Fat}"/>
+                        			<Run Text="g "/>
+                        			<Run x:Uid="Fat" Text="Rasvaa"/>
+                                </TextBlock>
+
+                                <TextBlock Margin="17,163,-12,38" Style="{StaticResource BasicTextStyle}" RenderTransformOrigin="0.5,0.5">
+                                    <TextBlock.RenderTransform>
+                                        <CompositeTransform SkewX="-0.722" TranslateX="0.718"/>
+                                    </TextBlock.RenderTransform>
+                        			<Run Text="{Binding Fibre}"/>
+                        			<Run Text="g "/>
+                        			<Run x:Uid="Fibre" Text="Kuitua"/>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+                        <Button x:Name="ButtonAddToDiary" Click="ButtonAddToDiary_Click" HorizontalAlignment="Left" Margin="385,435,-33,0" VerticalAlignment="Top" Height="70" Width="263" Template="{StaticResource ButtonControlTemplate}" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <CompositeTransform Rotation="3.656"/>
+                            </Button.RenderTransform>
+                            <ContentControl>
+                                <Grid>
+                                <TextBlock>
+                                    <Run x:Uid="AddToDiary" Text="Lisää päiväkirjaan"></Run>
+                                </TextBlock>
+                                <TextBlock Margin="0,39,0.337,-39.493" TextAlignment="Center">
+                                    <Run Text="{Binding CountedCalories}" />
+                                    <Run Text=" kcal" />
+                                </TextBlock>
+                                </Grid>
+                            </ContentControl>
+                        </Button>
+                    </Grid>
+                    <Border BorderThickness="1" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" HorizontalAlignment="Left" Height="279" Margin="48,148,0,0" VerticalAlignment="Top" Width="279" RenderTransformOrigin="0.5,0.5">
+                        <Border.RenderTransform>
+                            <CompositeTransform Rotation="-7.123"/>
+                        </Border.RenderTransform>
+                        <Grid x:Name="GridAdd"/>
+                    </Border>
+                </Grid>
+            </Border>
+            <TextBlock x:Uid="SearchError" Visibility="Collapsed" x:Name="TextBlockSearch" HorizontalAlignment="Left" Margin="90,277,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="60" Width="350"/>
         </Grid>
     </Grid>
 </Page>

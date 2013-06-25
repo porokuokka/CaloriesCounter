@@ -126,11 +126,17 @@
   <data name="AddToDiary.Text" xml:space="preserve">
     <value>Add to diary</value>
   </data>
+  <data name="AddToDiaryButton.Content" xml:space="preserve">
+    <value>Add to diary</value>
+  </data>
   <data name="ApplicationName.Text" xml:space="preserve">
     <value>Calorie Counter!</value>
   </data>
   <data name="Carbohydrates.Text" xml:space="preserve">
     <value>Carbohydrates</value>
+  </data>
+  <data name="Create.Text" xml:space="preserve">
+    <value>Create new ingredient</value>
   </data>
   <data name="CreateNewHelp.Text" xml:space="preserve">
     <value>On create new page you can add a new ingredient. Fill in the boxes and name the ingredient so that you can find it easily with searchcriteria. When the ingredient is added you can find it on search page and add it to your diary.</value>
@@ -147,8 +153,14 @@
   <data name="Fibre.Text" xml:space="preserve">
     <value>Fibre</value>
   </data>
+  <data name="Home.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="HttpError" xml:space="preserve">
     <value>Oops! For some reason we are unable to connect to internet. Please check your internet connection and try again!</value>
+  </data>
+  <data name="ItemName.Text" xml:space="preserve">
+    <value>Ingredients name</value>
   </data>
   <data name="Protein.Text" xml:space="preserve">
     <value>Protein</value>
@@ -156,11 +168,17 @@
   <data name="Search.Text" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="SearchCriteria.Text" xml:space="preserve">
+  <data name="SearchCriteria.Content" xml:space="preserve">
     <value>Enter your search criteria here</value>
+  </data>
+  <data name="SearchError.Text" xml:space="preserve">
+    <value>Oops! Nothing could be found with submitted search criteria. Please try again with shorter criteria or add a new ingredient</value>
   </data>
   <data name="SearchHelp.Text" xml:space="preserve">
     <value>On search page you can search for ingrediens and add them to the selected day. Ingredients are added to a cloud service so they can be used by other users of the app too.</value>
+  </data>
+  <data name="TextBoxSearch.Text" xml:space="preserve">
+    <value />
   </data>
   <data name="Welcome.Text" xml:space="preserve">
     <value>This app was developed to help keeping a food diary. To stand out from collections of thousands of other similar apps, CalorieCounter! has left out recommendations of losing weight and focused on simple arithmetics of calorie counting. This makes the app applicaple for both needs of losing and gaining weight. CalorieCounter! adds up the calories of a day and saves them into a database where you can easily browse your diary. On diary-page you can also see the nutrition facts of the intake energy per day. CalorieCounter! makes it easy to add new ingredients into a cloud service so you don't have to tie yourself to using an insufficient database.</value>

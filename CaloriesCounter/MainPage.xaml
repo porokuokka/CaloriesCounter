@@ -54,7 +54,7 @@
                 </Border.RenderTransform>
                 <Grid x:Name="GridCreateNew" Tapped="GridDiary_Tapped">
                     <TextBlock  x:Name="TextBlockCreateNew" HorizontalAlignment="Left" TextWrapping="Wrap" FontSize="20" VerticalAlignment="Top" Style="{StaticResource CaptionTextStyle}" Margin="22,20,0,0">
-            <Run x:Uid="CreateNew" Text="Luo uusi raaka-aine"></Run>
+            <Run x:Uid="Create" Text="Luo uusi raaka-aine"></Run>
                     </TextBlock>
                     <TextBlock TextWrapping="Wrap" Style="{StaticResource CaptionTextStyle}" Margin="20,62,4,-4">
             <Run x:Uid="CreateNewHelp" Text="Hae-sivulla voit hakea ruoka-aineita, tarkastella niiden koostumusta ja lisätä niitä valitulle päivälle ruokapäiväkirjaan. Ruoka-aineet lisätään pilvipalvelussa sijaitsevaan tietokantaan, jotta muutkin voivat käyttää niitä ruokapäiväkirjassaan."></Run>

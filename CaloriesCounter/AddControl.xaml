@@ -1,0 +1,28 @@
+﻿<UserControl
+    x:Class="CaloriesCounter.AddControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CaloriesCounter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="279" Height="261">
+
+    <Grid>
+        <Grid.Resources>
+            <local:StringToFloatConverter x:Key="FloatConverter" />
+        </Grid.Resources>
+        <TextBlock x:Uid="AddToDiary" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Lisää päiväkirjaan" VerticalAlignment="Top" Style="{StaticResource ItemTextStyle}" Width="481"/>
+        <TextBox x:Name="TextBoxAmount" HorizontalAlignment="Left" Margin="90,155,0,0" TextWrapping="Wrap" Text="{Binding Amount, Mode=TwoWay, Converter={StaticResource FloatConverter}}" TextAlignment="Center" InputScope="Number" VerticalAlignment="Top" Height="35" Width="94"/>
+        <RadioButton x:Name="RadioGrams" Checked="RadioGrams_Checked"  Content="g" HorizontalAlignment="Left" Margin="69,66,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RadioPortion" Checked="RadioPortion_Checked"  Content="{Binding Portion}" HorizontalAlignment="Left" Margin="163,66,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button x:Name="ButtonMinus" Click="ButtonMinus_Click" Content="-" HorizontalAlignment="Left" Margin="20,155,0,0" VerticalAlignment="Top" Width="97" Template="{StaticResource ButtonControlTemplate}"/>
+        <Button x:Name="ButtinPlus" Click="ButtinPlus_Click" Content="+" HorizontalAlignment="Left" Margin="212,155,-35,0" VerticalAlignment="Top" Width="102" RenderTransformOrigin="0.521,0.5" Template="{StaticResource ButtonControlTemplate}" Height="24"/>
+        <TextBlock x:Name="Counted" HorizontalAlignment="Left" Margin="92,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource BodyTextStyle}" Width="84" TextAlignment="Center" Height="24">
+        <Run Text="{Binding CountedCalories}"></Run>
+            <Run Text=" kcal"></Run>
+        </TextBlock>
+
+
+    </Grid>
+</UserControl>

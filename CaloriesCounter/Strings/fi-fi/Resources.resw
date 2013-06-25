@@ -126,11 +126,17 @@
   <data name="AddToDiary.Text" xml:space="preserve">
     <value>Lisää päiväkirjaan</value>
   </data>
+  <data name="AddToDiaryButton.Content" xml:space="preserve">
+    <value>Lisää päiväkirjaan</value>
+  </data>
   <data name="ApplicationName.Text" xml:space="preserve">
     <value>Kalorilaskuri!</value>
   </data>
   <data name="Carbohydrates.Text" xml:space="preserve">
     <value>Hiilihydraatteja</value>
+  </data>
+  <data name="Create.Text" xml:space="preserve">
+    <value>Luo uusi raaka-aine</value>
   </data>
   <data name="CreateNewHelp.Text" xml:space="preserve">
     <value>Luo uusi-sivulla voit luoda uuden ruoka-aineen. Anna ruoka-aineelle nimi, jonka löydät helposti hakusanalla, syötä tekstikenttiin ravinto-arvot, jotka löytyvät helposti finelistä tai paketin kyljestä. Kun ruoka-aine on lisätty, voit hakea sitä hakusivulla ja lisätä ruokapäiväkirjaasi.</value>
@@ -147,8 +153,17 @@
   <data name="Fibre.Text" xml:space="preserve">
     <value>Kuitua</value>
   </data>
+  <data name="Home.Text" xml:space="preserve">
+    <value>Alkuun</value>
+  </data>
   <data name="HttpError" xml:space="preserve">
     <value>Hups! Jostain syystä emme saa yhteyttä internetiin. Ole hyvä ja tarkista internet yhteytesi ja koeta uudelleen!</value>
+  </data>
+  <data name="ItemName.Text" xml:space="preserve">
+    <value>Raaka-aineen nimi</value>
+  </data>
+  <data name="ItemNameHelp.Text" xml:space="preserve">
+    <value>Kirjoita tähän raaka-aineen nimi</value>
   </data>
   <data name="Protein.Text" xml:space="preserve">
     <value>Proteiinia</value>
@@ -156,8 +171,11 @@
   <data name="Search.Text" xml:space="preserve">
     <value>Hae</value>
   </data>
-  <data name="SearchCriteria" xml:space="preserve">
+  <data name="SearchCriteria.Content" xml:space="preserve">
     <value>Kirjoita hakusanat tähän</value>
+  </data>
+  <data name="SearchError.Text" xml:space="preserve">
+    <value>Hups! Hakusanalla ei löydetty tuloksia. Koeta uudelleen esimerkiksi lyhyemmällä hakusanalla tai lisää uusi raaka-aine.</value>
   </data>
   <data name="SearchHelp.Text" xml:space="preserve">
     <value>Hae-sivulla voit hakea ruoka-aineita, tarkastella niiden koostumusta ja lisätä niitä valitulle päivälle ruokapäiväkirjaan. Ruoka-aineet lisätään pilvipalvelussa sijaitsevaan tietokantaan, jotta muutkin voivat käyttää niitä ruokapäiväkirjassaan.</value>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,9 @@ namespace CaloriesCounter
     /// </summary>
     sealed partial class App : Application
     {
+
+        public static MobileServiceClient MobileService =
+            new MobileServiceClient("https://kalorilaskuri.azure-mobile.net/", "XEwGtjLRTwuzVwkZjTojpRtQeEcAfb79");
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -69,9 +73,11 @@ namespace CaloriesCounter
                     throw new Exception("Failed to create initial page");
                 }
             }
+
             // Ensure the current window is active
             Window.Current.Activate();
         }
+
 
         /// <summary>
         /// Invoked when application execution is being suspended.  Application state is saved
