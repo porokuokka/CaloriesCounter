@@ -61,12 +61,12 @@
             </Controls1:DatePicker.RenderTransform>
         </Controls1:DatePicker>
 
-        <!--        <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="536.209" Margin="744.908,179.539,0,0" VerticalAlignment="Top" Width="502" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+        <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="536.209" Margin="744.908,179.539,0,0" VerticalAlignment="Top" Width="502" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Border.RenderTransform>
                 <CompositeTransform Rotation="5.898"/>
             </Border.RenderTransform>
 
-        </Border>-->
+        </Border>
         <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="421.972" Margin="44.486,291.364,0,0" VerticalAlignment="Top" Width="470.84" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Border.RenderTransform>
                 <CompositeTransform Rotation="-4.489"/>

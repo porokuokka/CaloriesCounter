@@ -31,9 +31,8 @@ namespace CaloriesCounter
         public static MobileServiceClient MobileService =
             new MobileServiceClient("https://kalorilaskuri.azure-mobile.net/", "XEwGtjLRTwuzVwkZjTojpRtQeEcAfb79");
 
-        public static string DBPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\caloriesTesting3.db";
+        public static string DBPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\caloriesTesting5.sqlite";
         public static DayViewModel CurrentDay { get; set; }
-        public static IntakeViewModel Intake { get; set; }
 
         //public DateTime SelectedDay { get; set; }
 
@@ -55,9 +54,7 @@ namespace CaloriesCounter
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            CurrentDay = new DayViewModel();
-            CurrentDay.Date = DateTime.Today;
-            Intake = new IntakeViewModel();
+            
             // Initialize the database if necessary
             using (var db = new SQLite.SQLiteConnection(DBPath))
             {
@@ -65,6 +62,8 @@ namespace CaloriesCounter
                 db.CreateTable<Day>();
                 db.CreateTable<Intake>();
             }
+
+            CurrentDay = DayViewModel.GetDayByDate(DateTime.Today);
 
             Frame rootFrame = Window.Current.Content as Frame;
 

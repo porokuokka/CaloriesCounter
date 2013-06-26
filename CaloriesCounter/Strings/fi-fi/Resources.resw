@@ -138,6 +138,9 @@
   <data name="Create.Text" xml:space="preserve">
     <value>Luo uusi raaka-aine</value>
   </data>
+  <data name="CreateNew.Text" xml:space="preserve">
+    <value>Luo uusi raaka-aine</value>
+  </data>
   <data name="CreateNewHelp.Text" xml:space="preserve">
     <value>Luo uusi-sivulla voit luoda uuden ruoka-aineen. Anna ruoka-aineelle nimi, jonka löydät helposti hakusanalla, syötä tekstikenttiin ravinto-arvot, jotka löytyvät helposti finelistä tai paketin kyljestä. Kun ruoka-aine on lisätty, voit hakea sitä hakusivulla ja lisätä ruokapäiväkirjaasi.</value>
   </data>

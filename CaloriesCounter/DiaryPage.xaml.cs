@@ -46,10 +46,10 @@ namespace CaloriesCounter
         private void changeDate(DateTime date)
         {
             //DatePickerDiary.Date = date;
-            App.CurrentDay = DayViewModel.GetDayByDate(date); //tuleeko vähän ristivetoa?
+            App.CurrentDay = DayViewModel.GetDayByDate(date);
             dayViewModel = App.CurrentDay;
             GridDayTotal.DataContext = dayViewModel;
-            TextBlockTotal.DataContext = dayViewModel.Total.ToString();
+            TextBlockTotal.Text = dayViewModel.Total.ToString();
             TextBlockCarbohydrates.DataContext = dayViewModel.Carbohydrates.ToString();
             TextBlockDate.Text = convertDate(date);
             Intakes = new IntakesViewModel();

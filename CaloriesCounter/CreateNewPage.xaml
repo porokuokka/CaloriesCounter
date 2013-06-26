@@ -42,8 +42,6 @@
                 </Border.RenderTransform>
                 <TextBlock x:Uid="Search" TextWrapping="Wrap" Text="Hae" Style="{StaticResource Navigation}" RenderTransformOrigin="1.143,0.55" Margin="0,27,2.745,31.836" Width="120"/>
             </Border>
-            
-            <TextBlock x:Name="Debug" HorizontalAlignment="Left" Margin="574,602,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="71" Width="231" Style="{StaticResource HeaderTextStyle}"/>
         </Grid>
         <TextBlock x:Uid="ItemName" HorizontalAlignment="Left" Margin="93,254,0,0" TextWrapping="Wrap" Text="Raaka-aineen nimi" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
         <TextBox GotFocus="TextBox_GotFocus" HorizontalAlignment="Left" Margin="92,306,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Width="440"/>

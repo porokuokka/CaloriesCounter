@@ -155,8 +155,9 @@ namespace CaloriesCounter
             countGrams(intake, item);
             intake.Id = 0;
             intake.DayId = App.CurrentDay.Id;
+            intake.Name = item.Name;
             intake.Calories = (int)add.getCounterClass().CountedCalories;
-            intake.CreateIntake(intake);
+            Debug.Text = intake.CreateIntake(intake);
         }
 
         private void countGrams(IntakeViewModel intake, Item item)

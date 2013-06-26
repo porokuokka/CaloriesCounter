@@ -211,7 +211,7 @@ namespace CaloriesCounter.ViewModels
                             result = "This intake was not saved.";
                         }
 
-                    refreshDayTotals(day);
+                   // refreshDayTotals(day);
                 }
                 return result;
             }
@@ -246,7 +246,7 @@ namespace CaloriesCounter.ViewModels
                         result = "This intake was not saved.";
                     }
 
-                    refreshDayTotals(day);
+                    refreshDayTotals(day, intake);
                 }
                 return result;
             }
@@ -255,17 +255,15 @@ namespace CaloriesCounter.ViewModels
             /// Refreshes days total values,
             /// </summary>
             /// <param name="day">Day that has been queryed from db before</param>
-            public void refreshDayTotals(Day day)
+            public void refreshDayTotals(Day day, IntakeViewModel intake)
             {
                 using (var db = new SQLite.SQLiteConnection(App.DBPath))
                 {
-                    //day.Total = (db.Table<Intake>().Where(i => i.DayId == day.Id).Select(i => i.Calories).Sum());
-                    day.Total = 875;
-                    day.Carbohydrates = (db.Table<Intake>().Where(i => i.DayId == day.Id).Select(i => i.Carbohydrates).Sum());
-                    day.Protein = (db.Table<Intake>().Where(i => i.DayId == day.Id).Select(i => i.Protein).Sum());
-                    day.Fat = (db.Table<Intake>().Where(i => i.DayId == day.Id).Select(i => i.Fat).Sum());
-                    day.Fibre = (db.Table<Intake>().Where(i => i.DayId == day.Id).Select(i => i.Fibre).Sum());
-
+                    day.Total += intake.Calories;
+                    day.Carbohydrates += intake.Carbohydrates;
+                    day.Protein += intake.Protein;
+                    day.Fat += intake.Fat;
+                    day.Fibre += intake.Fibre;
                     db.Update(day);
                 }
             }

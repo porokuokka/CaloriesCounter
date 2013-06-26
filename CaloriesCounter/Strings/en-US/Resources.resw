@@ -138,6 +138,9 @@
   <data name="Create.Text" xml:space="preserve">
     <value>Create new ingredient</value>
   </data>
+  <data name="CreateNew.Text" xml:space="preserve">
+    <value>Create new ingredient</value>
+  </data>
   <data name="CreateNewHelp.Text" xml:space="preserve">
     <value>On create new page you can add a new ingredient. Fill in the boxes and name the ingredient so that you can find it easily with searchcriteria. When the ingredient is added you can find it on search page and add it to your diary.</value>
   </data>
