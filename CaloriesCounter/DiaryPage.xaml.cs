@@ -1,7 +1,11 @@
-﻿using System;
+﻿using CaloriesCounter.DataAccess;
+using CaloriesCounter.DataAccess.Entities;
+using CaloriesCounter.DataAccess.Repository;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,11 +20,16 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CaloriesCounter
 {
+    
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class DiaryPage : Page
     {
+        private Day _day;
+        private IDayRepository _dayRepository;
+
         public DiaryPage()
         {
             this.InitializeComponent();
@@ -32,8 +41,33 @@ namespace CaloriesCounter
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.  The Parameter
         /// property is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            InitializeDay();
+            await InitializeDatabase();
+            await UpdateContacts();   
+        }
+
+        private async Task UpdateContacts()
+        {
+            ListViewDays.ItemsSource = await _dayRepository.GetAllAsync();
+        }
+
+        private void InitializeDay()
+        {
+            _day = new Day();
+            _day.Date = DateTime.Today;
+            _day.Testi = "Testipäivä";
+            TextBlockDate.Text = _day.Date.ToString();
+            TextBlockName.Text = _day.Testi;
+        }
+
+        private async Task InitializeDatabase()
+        {
+            string datbasePath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\calories.db";
+            Database database = new Database(datbasePath);
+            await database.Initialize();
+            _dayRepository = new DayRepository(database);
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)

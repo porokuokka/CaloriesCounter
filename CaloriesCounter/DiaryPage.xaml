@@ -43,28 +43,22 @@
                 <TextBlock x:Uid="Search" TextWrapping="Wrap" Text="Hae" Style="{StaticResource Navigation}" RenderTransformOrigin="1.143,0.55" Margin="0,27,2.745,31.836" Width="120"/>
             </Border>
             <Controls1:DatePicker x:Name="DatePickerDiary" HorizontalAlignment="Left" Margin="94,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
+
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="536.209" Margin="744.908,179.539,0,0" VerticalAlignment="Top" Width="502" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="5.898"/>
                 </Border.RenderTransform>
-                <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                    <ListView>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <TextBlock Text="{Binding Name}" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollViewer>
             </Border>
 
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="421.972" Margin="44.486,291.364,0,0" VerticalAlignment="Top" Width="470.84" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="-4.489"/>
                 </Border.RenderTransform>
+                <Grid>
+                    <TextBlock x:Name="TextBlockDate" HorizontalAlignment="Left" Margin="74,60,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
+                    <TextBlock x:Name="TextBlockName" HorizontalAlignment="Left" Margin="76,134,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
 
+                </Grid>
             </Border>
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="64.108" Margin="543.668,257.267,0,0" VerticalAlignment="Top" Width="179.216" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
@@ -72,6 +66,17 @@
                 </Border.RenderTransform>
 
             </Border>
+
         </Grid>
+        <ListView x:Name="ListViewDays" HorizontalAlignment="Left" Height="519.797" Margin="760.925,198.005,0,0" VerticalAlignment="Top" Width="486.555" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <ListView.RenderTransform>
+                <CompositeTransform Rotation="6.699"/>
+            </ListView.RenderTransform>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Testi}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

@@ -109,6 +109,10 @@
     <Compile Include="CreateNewPage.xaml.cs">
       <DependentUpon>CreateNewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess\CaloriesCounterDatabase.cs" />
+    <Compile Include="DataAccess\Entities\Day.cs" />
+    <Compile Include="DataAccess\Repository\DayRepository.cs" />
+    <Compile Include="DataAccess\Repository\IDayRepository.cs" />
     <Compile Include="DiaryPage.xaml.cs">
       <DependentUpon>DiaryPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +127,8 @@
     <Compile Include="SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SQLite.cs" />
+    <Compile Include="SQLiteAsync.cs" />
     <Compile Include="StringToFloatConverter.cs" />
   </ItemGroup>
   <ItemGroup>
