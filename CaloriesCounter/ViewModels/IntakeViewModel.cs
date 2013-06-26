@@ -216,6 +216,34 @@ namespace CaloriesCounter.ViewModels
                 return result;
             }
 
+            public void DeleteIntake(IntakeViewModel intake)
+            {
+                using (var db = new SQLite.SQLiteConnection(App.DBPath))
+                {
+                    Intake delete = db.Table<Intake>().Where(i => i.Id == intake.Id).SingleOrDefault();
+                    var day = (db.Table<Day>().Where(d => d.Id == intake.DayId)).SingleOrDefault();
+                    reduceDayTotals(day, intake);
+                    db.Delete(delete);
+                }
+            }
+
+            /// <summary>
+            /// Refreshes days total values,
+            /// </summary>
+            /// <param name="day">Day that has been queryed from db before</param>
+            public void reduceDayTotals(Day day, IntakeViewModel intake)
+            {
+                using (var db = new SQLite.SQLiteConnection(App.DBPath))
+                {
+                    day.Total -= intake.Calories;
+                    day.Carbohydrates -= intake.Carbohydrates;
+                    day.Protein -= intake.Protein;
+                    day.Fat -= intake.Fat;
+                    day.Fibre -= intake.Fibre;
+                    db.Update(day);
+                }
+            }
+
             public string CreateIntake(IntakeViewModel intake)
             {
                 string result = string.Empty;
@@ -246,7 +274,7 @@ namespace CaloriesCounter.ViewModels
                         result = "This intake was not saved.";
                     }
 
-                    refreshDayTotals(day, intake);
+                    addUpDayTotals(day, intake);
                 }
                 return result;
             }
@@ -255,7 +283,7 @@ namespace CaloriesCounter.ViewModels
             /// Refreshes days total values,
             /// </summary>
             /// <param name="day">Day that has been queryed from db before</param>
-            public void refreshDayTotals(Day day, IntakeViewModel intake)
+            public void addUpDayTotals(Day day, IntakeViewModel intake)
             {
                 using (var db = new SQLite.SQLiteConnection(App.DBPath))
                 {

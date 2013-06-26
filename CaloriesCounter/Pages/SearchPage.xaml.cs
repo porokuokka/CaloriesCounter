@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -48,6 +49,7 @@ namespace CaloriesCounter
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             GridItemDetails.Visibility = Visibility.Collapsed;
+            
         }
 
         #region search
@@ -152,23 +154,25 @@ namespace CaloriesCounter
         {
             IntakeViewModel intake = new IntakeViewModel();
             Item item = ListViewItems.SelectedItem as Item;
-            countGrams(intake, item);
+            intake.Grams = add.getCounterClass().Grams;
+            intake.Carbohydrates = item.Carbohydrates / 100F * intake.Grams;
+            intake.Protein = item.Protein / 100F * intake.Grams;
+            intake.Fat = item.Fat / 100F * intake.Grams;
+            intake.Fibre = item.Fibre / 100F * intake.Grams;
             intake.Id = 0;
             intake.DayId = App.CurrentDay.Id;
             intake.Name = item.Name;
             intake.Calories = (int)add.getCounterClass().CountedCalories;
             Debug.Text = intake.CreateIntake(intake);
-        }
-
-        private void countGrams(IntakeViewModel intake, Item item)
-        {
-            intake.Carbohydrates = item.Carbohydrates / 100F * intake.Grams;
-            intake.Protein = item.Protein / 100F * intake.Grams;
-            intake.Fat = item.Fat / 100F * intake.Grams;
-            intake.Fibre = item.Fibre / 100F * intake.Grams;
+            textBlock.Visibility = Visibility.Visible;
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            textBlock.Text = loader.GetString("AddingSuccess");
+            var f = this.Resources["Storyboard1"] as Storyboard;
+            if (f != null) f.Begin();
         }
 
         #endregion
 
+      
     }
 }

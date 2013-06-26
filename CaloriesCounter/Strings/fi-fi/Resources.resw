@@ -123,6 +123,9 @@
   <data name="Add.Content" xml:space="preserve">
     <value>Lisää</value>
   </data>
+  <data name="AddingSuccess" xml:space="preserve">
+    <value>Lisäys onnistui!</value>
+  </data>
   <data name="AddToDiary.Text" xml:space="preserve">
     <value>Lisää päiväkirjaan</value>
   </data>
@@ -215,5 +218,11 @@
   </data>
   <data name="WelcomeHeader.Text" xml:space="preserve">
     <value>Tervetuloa käyttämään Kalorilaskuria!</value>
+  </data>
+  <data name="DayOverview.Text" xml:space="preserve">
+    <value>Päivän energialaskelma</value>
+  </data>
+  <data name="Delete.Content" xml:space="preserve">
+    <value>Poista</value>
   </data>
 </root>

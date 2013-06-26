@@ -19,7 +19,10 @@ using CaloriesCounter.Models;
 using CaloriesCounter.ViewModels;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
-
+/*TODO: check values on create new
+ * Create icons
+ * Publish
+ * */
 namespace CaloriesCounter
 {
     /// <summary>
@@ -31,7 +34,7 @@ namespace CaloriesCounter
         public static MobileServiceClient MobileService =
             new MobileServiceClient("https://kalorilaskuri.azure-mobile.net/", "XEwGtjLRTwuzVwkZjTojpRtQeEcAfb79");
 
-        public static string DBPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\caloriesTesting5.sqlite";
+        public static string DBPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\caloriesTesting6.sqlite";
         public static DayViewModel CurrentDay { get; set; }
 
         //public DateTime SelectedDay { get; set; }

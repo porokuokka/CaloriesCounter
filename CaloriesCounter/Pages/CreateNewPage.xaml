@@ -7,10 +7,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Storyboard x:Name="Storyboard1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LayoutRoot">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Page.Resources>
+    
     <Grid x:Name="LayoutRoot" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        
         <Grid.Resources>
             <local:StringToFloatConverter x:Key="FloatConverter" />
         </Grid.Resources>
+        <TextBlock x:Name="textBlock" Visibility="Collapsed" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="169" Width="509" Style="{StaticResource HeaderTextStyle}" Margin="447,280,410,319" />
         <TextBlock x:Uid="CreateNew" HorizontalAlignment="Left" Margin="97,161,0,0" TextWrapping="Wrap" Text="Luo uusi raaka-aine" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
 
         <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="96,72,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource ApplicationHeader}" Height="52" Width="564"/>

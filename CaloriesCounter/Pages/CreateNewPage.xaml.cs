@@ -10,6 +10,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -114,6 +115,11 @@ namespace CaloriesCounter
             this.GridNutrition.DataContext = newItem;
             this.GridPortion.DataContext = newItem;
             LayoutRoot.DataContext = newItem;
+            textBlock.Visibility = Visibility.Visible;
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            textBlock.Text = loader.GetString("AddingSuccess");
+            var f = this.Resources["Storyboard1"] as Storyboard;
+            if (f != null) f.Begin();
         }
 
     }

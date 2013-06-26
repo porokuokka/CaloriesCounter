@@ -1,5 +1,5 @@
 ﻿using CaloriesCounter.Models;
-using CaloriesCounter.DataAccess.Repository;
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,17 +27,13 @@ namespace CaloriesCounter
     /// </summary>
     public sealed partial class DiaryPage : Page
     {
-        private DayViewModel dayViewModel { get; set; }
+        private DayViewModel dayViewModel;
         private IntakesViewModel Intakes;
         private List<IntakeViewModel> intks;
-        private MessageBox msgbox;
 
         public DiaryPage()
         {
             this.InitializeComponent();
-            msgbox = new MessageBox();
-            msgbox.ShowMessage("Tultiin diarypagelle");
-            LayoutRoot.Children.Add(msgbox);
 
             DatePickerDiary.Date = App.CurrentDay.Date;
             changeDate(App.CurrentDay.Date);
@@ -49,8 +45,7 @@ namespace CaloriesCounter
             App.CurrentDay = DayViewModel.GetDayByDate(date);
             dayViewModel = App.CurrentDay;
             GridDayTotal.DataContext = dayViewModel;
-            TextBlockTotal.Text = dayViewModel.Total.ToString();
-            TextBlockCarbohydrates.DataContext = dayViewModel.Carbohydrates.ToString();
+ 
             TextBlockDate.Text = convertDate(date);
             Intakes = new IntakesViewModel();
             intks = Intakes.GetIntakesList(dayViewModel.Id);
@@ -104,9 +99,10 @@ namespace CaloriesCounter
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-
+            IntakeViewModel intake = (IntakeViewModel)(sender as Button).DataContext;
+            intake.DeleteIntake(intake);
+            changeDate(App.CurrentDay.Date);
         }
-
 
 
 

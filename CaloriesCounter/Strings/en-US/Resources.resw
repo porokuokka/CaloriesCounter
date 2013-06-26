@@ -123,6 +123,9 @@
   <data name="Add.Content" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="AddingSuccess" xml:space="preserve">
+    <value>Adding succeeded!</value>
+  </data>
   <data name="AddToDiary.Text" xml:space="preserve">
     <value>Add to diary</value>
   </data>
@@ -218,5 +221,11 @@
   </data>
   <data name="WelcomeHeader.Text" xml:space="preserve">
     <value>Welcome to CalorieCounter!</value>
+  </data>
+  <data name="DayOverview.Text" xml:space="preserve">
+    <value>Days intake overview</value>
+  </data>
+  <data name="Delete.Content" xml:space="preserve">
+    <value>Delete</value>
   </data>
 </root>
