@@ -4,14 +4,21 @@
     xmlns:local="using:CaloriesCounter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Controls="using:Coding4Fun.Toolkit.Controls"
-    xmlns:WinRTDatePicker="using:WinRTDatePicker"
     xmlns:Controls1="using:StoreAppLib.Controls"
     x:Class="CaloriesCounter.DiaryPage"
     mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-
+        <ListView x:Name="ListViewDays" HorizontalAlignment="Left" Height="519.797" Margin="760.925,198.005,0,0" VerticalAlignment="Top" Width="486.555" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <ListView.RenderTransform>
+                <CompositeTransform Rotation="6.699"/>
+            </ListView.RenderTransform>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Testi}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="96,72,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource ApplicationHeader}" Height="52" Width="564"/>
         <TextBlock x:Uid="Diary" HorizontalAlignment="Left" Margin="97,161,0,0" TextWrapping="Wrap" Text="Päiväkirja" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
         <Grid x:Name="NavigationGrid" Margin="10,10,-10,-10">
@@ -66,17 +73,10 @@
                 </Border.RenderTransform>
 
             </Border>
+            <Button x:Name="Save" Content="Shave" Click="Save_Click" HorizontalAlignment="Left" Margin="590,442,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="Delete" Content="Delete" Click="Delete_Click"  HorizontalAlignment="Left" Margin="590,506,0,0" VerticalAlignment="Top"/>
 
         </Grid>
-        <ListView x:Name="ListViewDays" HorizontalAlignment="Left" Height="519.797" Margin="760.925,198.005,0,0" VerticalAlignment="Top" Width="486.555" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-            <ListView.RenderTransform>
-                <CompositeTransform Rotation="6.699"/>
-            </ListView.RenderTransform>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Testi}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
     </Grid>
 </Page>

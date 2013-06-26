@@ -207,8 +207,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.VCLibs, Version=11.0">
+      <Name>Microsoft Visual C++ Runtime Package</Name>
+    </SDKReference>
     <SDKReference Include="MSTestFramework, Version=11.0">
       <Name>MSTest for Managed Projects</Name>
+    </SDKReference>
+    <SDKReference Include="SQLite.WinRT, Version=3.7.17">
+      <Name>SQLite for Windows Runtime</Name>
     </SDKReference>
     <SDKReference Include="TestPlatform, Version=11.0">
       <Name>Microsoft Visual Studio Test Core</Name>

@@ -29,11 +29,13 @@ namespace CaloriesCounter
     {
         private Day _day;
         private IDayRepository _dayRepository;
+        private ListView ListViewDays2;
 
         public DiaryPage()
         {
             this.InitializeComponent();
             DatePickerDiary.Date = DateTime.Today;
+            ListViewDays2 = new ListView();
         }
 
         /// <summary>
@@ -50,7 +52,14 @@ namespace CaloriesCounter
 
         private async Task UpdateContacts()
         {
-            ListViewDays.ItemsSource = await _dayRepository.GetAllAsync();
+            ListViewDays2.ItemsSource = await _dayRepository.GetAllAsync();
+        }
+
+        private async void Save_Click(object sender, RoutedEventArgs e)
+        {
+            await _dayRepository.SaveAsync(_day);
+            await UpdateContacts();
+            //Status.Text = string.Format("{0} has been saved to your contacts.", _contact);
         }
 
         private void InitializeDay()
@@ -64,7 +73,7 @@ namespace CaloriesCounter
 
         private async Task InitializeDatabase()
         {
-            string datbasePath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\calories.db";
+            string datbasePath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\contacts.db";
             Database database = new Database(datbasePath);
             await database.Initialize();
             _dayRepository = new DayRepository(database);
@@ -94,6 +103,12 @@ namespace CaloriesCounter
         }
 
         #endregion
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
 
     }
