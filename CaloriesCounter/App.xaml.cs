@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
+using CaloriesCounter;
 using System;
 using System.Collections.Generic;
 using System.IO;
