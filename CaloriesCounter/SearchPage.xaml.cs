@@ -1,4 +1,6 @@
-﻿using Microsoft.WindowsAzure.MobileServices;
+﻿using CaloriesCounter.Models;
+using CaloriesCounter.ViewModels;
+using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,16 +29,28 @@ namespace CaloriesCounter
         private List<Item> search;
         private IMobileServiceTable<Item> itemTable = App.MobileService.GetTable<Item>();
         private MessageBox msgb = new MessageBox();
-        private ProgressBar Progressbar = new ProgressBar();
+        //private ProgressBar Progressbar = new ProgressBar();
+        private AddControl add;
 
         public SearchPage()
         {
             this.InitializeComponent();
             this.LayoutRoot.Children.Add(msgb);
             
-            LoadData();
+           // LoadData();
         }
 
+        /// <summary>
+        /// Invoked when this page is about to be displayed in a Frame.
+        /// </summary>
+        /// <param name="e">Event data that describes how this page was reached.  The Parameter
+        /// property is typically used to configure the page.</param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            GridItemDetails.Visibility = Visibility.Collapsed;
+        }
+
+        #region search
         /// <summary>
         /// Loads items from mobile service to itemslist
         /// </summary>
@@ -77,12 +91,11 @@ namespace CaloriesCounter
 
         }
 
-
         private void TextBoxSearch_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-                TextBox text = (TextBox)sender;
-                TextBlockSearch.Visibility = Visibility.Collapsed;
-                Haku(text.Text);
+            TextBox text = (TextBox)sender;
+            TextBlockSearch.Visibility = Visibility.Collapsed;
+            Haku(text.Text);
         }
 
         private void ShowError(string error)
@@ -90,15 +103,19 @@ namespace CaloriesCounter
             msgb.ShowMessage(error);
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.  The Parameter
-        /// property is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void TextBoxSearch_GotFocus(object sender, RoutedEventArgs e)
         {
+            (sender as TextBox).SelectAll();
             GridItemDetails.Visibility = Visibility.Collapsed;
+            GridAdd.Children.Remove(add);
+            add = null;
+            GridItemDetails.DataContext = null;
+            search = null;
+            ListViewItems.ItemsSource = null;
         }
+
+        #endregion
+
 
         #region navigation
         private void HomeBorder_Tapped(object sender, TappedRoutedEventArgs e)
@@ -117,7 +134,7 @@ namespace CaloriesCounter
         }
         #endregion
 
-        private AddControl add;
+        #region Item
 
         private void ListViewItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -133,21 +150,24 @@ namespace CaloriesCounter
 
         private void ButtonAddToDiary_Click(object sender, RoutedEventArgs e)
         {
-
+            IntakeViewModel intake = new IntakeViewModel();
+            Item item = ListViewItems.SelectedItem as Item;
+            countGrams(intake, item);
+            intake.Id = 0;
+            intake.DayId = App.CurrentDay.Id;
+            intake.Calories = (int)add.getCounterClass().CountedCalories;
+            intake.CreateIntake(intake);
         }
 
-        private void TextBoxSearch_GotFocus(object sender, RoutedEventArgs e)
+        private void countGrams(IntakeViewModel intake, Item item)
         {
-            (sender as TextBox).SelectAll();
-            GridItemDetails.Visibility = Visibility.Collapsed;
-            GridAdd.Children.Remove(add);
-            add = null;
-            GridItemDetails.DataContext = null;
-            search = null;
-            ListViewItems.ItemsSource = null;
+            intake.Carbohydrates = item.Carbohydrates / 100F * intake.Grams;
+            intake.Protein = item.Protein / 100F * intake.Grams;
+            intake.Fat = item.Fat / 100F * intake.Grams;
+            intake.Fibre = item.Fibre / 100F * intake.Grams;
         }
 
-
+        #endregion
 
     }
 }

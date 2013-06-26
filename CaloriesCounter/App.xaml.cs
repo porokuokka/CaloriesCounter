@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using CaloriesCounter.Models;
+using CaloriesCounter.ViewModels;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -28,6 +30,13 @@ namespace CaloriesCounter
 
         public static MobileServiceClient MobileService =
             new MobileServiceClient("https://kalorilaskuri.azure-mobile.net/", "XEwGtjLRTwuzVwkZjTojpRtQeEcAfb79");
+
+        public static string DBPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\caloriesTesting3.db";
+        public static DayViewModel CurrentDay { get; set; }
+        public static IntakeViewModel Intake { get; set; }
+
+        //public DateTime SelectedDay { get; set; }
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -46,6 +55,17 @@ namespace CaloriesCounter
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
+            CurrentDay = new DayViewModel();
+            CurrentDay.Date = DateTime.Today;
+            Intake = new IntakeViewModel();
+            // Initialize the database if necessary
+            using (var db = new SQLite.SQLiteConnection(DBPath))
+            {
+                // Create the tables if they don't exist
+                db.CreateTable<Day>();
+                db.CreateTable<Intake>();
+            }
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -74,6 +94,8 @@ namespace CaloriesCounter
                     throw new Exception("Failed to create initial page");
                 }
             }
+
+            
 
             // Ensure the current window is active
             Window.Current.Activate();

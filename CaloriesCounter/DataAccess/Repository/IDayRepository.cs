@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CaloriesCounter.DataAccess.Entities;
+using CaloriesCounter.Models;
 
 namespace CaloriesCounter.DataAccess.Repository
 {

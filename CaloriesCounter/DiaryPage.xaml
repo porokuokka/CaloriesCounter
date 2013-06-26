@@ -15,7 +15,11 @@
             </ListView.RenderTransform>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Testi}" />
+                    <TextBlock>
+                        <Run Text="{Binding Name}"></Run>
+                        <Run Text="{Binding Calories}"></Run>
+                        <Run Text=" kcal"></Run>
+                    </TextBlock>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -49,34 +53,76 @@
                 </Border.RenderTransform>
                 <TextBlock x:Uid="Search" TextWrapping="Wrap" Text="Hae" Style="{StaticResource Navigation}" RenderTransformOrigin="1.143,0.55" Margin="0,27,2.745,31.836" Width="120"/>
             </Border>
-            <Controls1:DatePicker x:Name="DatePickerDiary" HorizontalAlignment="Left" Margin="94,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
-
-            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="536.209" Margin="744.908,179.539,0,0" VerticalAlignment="Top" Width="502" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-                <Border.RenderTransform>
-                    <CompositeTransform Rotation="5.898"/>
-                </Border.RenderTransform>
-            </Border>
-
-            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="421.972" Margin="44.486,291.364,0,0" VerticalAlignment="Top" Width="470.84" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-                <Border.RenderTransform>
-                    <CompositeTransform Rotation="-4.489"/>
-                </Border.RenderTransform>
-                <Grid>
-                    <TextBlock x:Name="TextBlockDate" HorizontalAlignment="Left" Margin="74,60,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
-                    <TextBlock x:Name="TextBlockName" HorizontalAlignment="Left" Margin="76,134,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}"/>
-
-                </Grid>
-            </Border>
-            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="64.108" Margin="543.668,257.267,0,0" VerticalAlignment="Top" Width="179.216" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-                <Border.RenderTransform>
-                    <CompositeTransform Rotation="-4.489"/>
-                </Border.RenderTransform>
-
-            </Border>
-            <Button x:Name="Save" Content="Shave" Click="Save_Click" HorizontalAlignment="Left" Margin="590,442,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="Delete" Content="Delete" Click="Delete_Click"  HorizontalAlignment="Left" Margin="590,506,0,0" VerticalAlignment="Top"/>
 
         </Grid>
+        <Controls1:DatePicker x:Name="DatePickerDiary" SelectionChanged="DatePickerDiary_SelectionChanged" HorizontalAlignment="Left" Margin="553.098,262.171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167.804" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="47.658">
+            <Controls1:DatePicker.RenderTransform>
+                <CompositeTransform Rotation="-5.793"/>
+            </Controls1:DatePicker.RenderTransform>
+        </Controls1:DatePicker>
 
+        <!--        <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="536.209" Margin="744.908,179.539,0,0" VerticalAlignment="Top" Width="502" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border.RenderTransform>
+                <CompositeTransform Rotation="5.898"/>
+            </Border.RenderTransform>
+
+        </Border>-->
+        <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="421.972" Margin="44.486,291.364,0,0" VerticalAlignment="Top" Width="470.84" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border.RenderTransform>
+                <CompositeTransform Rotation="-4.489"/>
+            </Border.RenderTransform>
+            <Grid x:Name="GridDayTotal" DataContext="{Binding DayViewModel}">
+                <TextBlock x:Name="TextBlockDate" HorizontalAlignment="Left" Margin="5,14,0,0" TextAlignment="Center" TextWrapping="Wrap" Text="10.9.2030" VerticalAlignment="Top" Style="{StaticResource HeaderTextStyle}" Width="462" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <CompositeTransform Rotation="-0.723" TranslateX="-2" TranslateY="8"/>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Grid>
+        </Border>
+        <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="64.108" Margin="541.663,256.986,0,0" VerticalAlignment="Top" Width="189.172" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border.RenderTransform>
+                <CompositeTransform Rotation="-5.401"/>
+            </Border.RenderTransform>
+
+        </Border>
+        <TextBlock x:Name="TextBlockTotal" HorizontalAlignment="Left" Margin="141.488,404.026,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}" Width="195" Height="34.054" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="-5.908" TranslateX="-2" TranslateY="8"/>
+            </TextBlock.RenderTransform>
+            <Run Text="{Binding Total}"></Run>
+            <Run Text=" kcal"></Run>
+        </TextBlock>
+        <TextBlock x:Name="TextBlockCarbohydrates" HorizontalAlignment="Left" Margin="147.488,442.026,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}" Width="195" Height="34.054" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="-5.908" TranslateX="-2" TranslateY="8"/>
+            </TextBlock.RenderTransform>
+        	<Run Text="{Binding Carbohydrates}"/>
+        	<Run Text=" g "/>
+            <Run x:Uid="Carbohydrates" Text="Hiilihydraatteja"></Run>
+        </TextBlock>
+        <TextBlock x:Name="TextBlockProtein" HorizontalAlignment="Left" Margin="157.488,484.026,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}" Width="195" Height="34.054" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="-5.908" TranslateX="-2" TranslateY="8"/>
+            </TextBlock.RenderTransform>
+        	<Run Text="{Binding Protein}"/>
+        	<Run Text=" g "/>
+        	<Run x:Uid="Protein" Text="Proteiinia"/>
+        </TextBlock>
+        <TextBlock x:Name="TextBlockFat" HorizontalAlignment="Left" Margin="163.488,530.026,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}" Width="195" Height="34.054" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="-5.908" TranslateX="-2" TranslateY="8"/>
+            </TextBlock.RenderTransform>
+        	<Run Text="{Binding Fat}"/>
+        	<Run Text=" g "/>
+        	<Run x:Uid="Fat" Text="Rasvaa"/>
+        </TextBlock>
+        <TextBlock x:Name="TextBlockFibre" HorizontalAlignment="Left" Margin="165.488,574.026,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}" Width="195" Height="34.054" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="-5.908" TranslateX="-2" TranslateY="8"/>
+            </TextBlock.RenderTransform>
+        	<Run Text="{Binding Fibre}"/>
+        	<Run Text=" g "/>
+        	<Run x:Uid="Fibre" Text="Kuitua"/>
+        </TextBlock>
     </Grid>
 </Page>

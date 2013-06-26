@@ -24,7 +24,7 @@
                 </Grid>
             </Border>
 
-            <Border x:Name="DiaryBorder" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="807.561,39.287,417.567,648.993" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <Border x:Name="DiaryBorder" Tapped="DiaryBorder_Tapped" CornerRadius="10,10,10,10" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="807.561,39.287,417.567,648.993" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="3.771"/>
                 </Border.RenderTransform>

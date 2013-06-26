@@ -1,4 +1,4 @@
-﻿using CaloriesCounter.DataAccess.Entities;
+﻿using CaloriesCounter.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;

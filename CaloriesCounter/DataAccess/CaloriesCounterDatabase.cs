@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SQLite;
-using CaloriesCounter.DataAccess.Entities;
+using CaloriesCounter.Models;
 ///http://visualstudiomagazine.com/articles/2013/02/27/build-a-windows-store-app-using-sqlite.aspx
 namespace CaloriesCounter.DataAccess
 {
@@ -26,6 +26,8 @@ namespace CaloriesCounter.DataAccess
         public async Task Initialize()
         {
             await _dbConnection.CreateTableAsync<Day>();
+            await _dbConnection.CreateTableAsync<Intake>();
+            
         }
 
         public SQLiteAsyncConnection GetAsyncConnection()
