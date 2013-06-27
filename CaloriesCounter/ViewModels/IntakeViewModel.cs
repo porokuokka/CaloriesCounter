@@ -285,6 +285,7 @@ namespace CaloriesCounter.ViewModels
             /// <param name="day">Day that has been queryed from db before</param>
             public void addUpDayTotals(Day day, IntakeViewModel intake)
             {
+
                 using (var db = new SQLite.SQLiteConnection(App.DBPath))
                 {
                     day.Total += intake.Calories;

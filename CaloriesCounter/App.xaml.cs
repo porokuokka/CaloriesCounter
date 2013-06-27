@@ -18,12 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using CaloriesCounter.Models;
 using CaloriesCounter.ViewModels;
 
-// The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
-/*TODO:
- * Create icons
- * Settings like about maybe should be done
- * Publish
- * */
+///Author: Iida Porokuokka
 namespace CaloriesCounter
 {
     /// <summary>
@@ -35,7 +30,7 @@ namespace CaloriesCounter
         public static MobileServiceClient MobileService =
             new MobileServiceClient("https://kalorilaskuri.azure-mobile.net/", "XEwGtjLRTwuzVwkZjTojpRtQeEcAfb79");
 
-        public static string DBPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\caloriesTesting6.sqlite";
+        public static string DBPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\caloriecounter.sqlite";
         public static DayViewModel CurrentDay { get; set; }
 
         //public DateTime SelectedDay { get; set; }
@@ -65,6 +60,9 @@ namespace CaloriesCounter
                 // Create the tables if they don't exist
                 db.CreateTable<Day>();
                 db.CreateTable<Intake>();
+                Day day = new Day();
+                day.Date = DateTime.Today;
+                db.Insert(day);
             }
 
             CurrentDay = DayViewModel.GetDayByDate(DateTime.Today);
