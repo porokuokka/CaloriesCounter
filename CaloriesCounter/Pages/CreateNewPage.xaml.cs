@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -108,18 +110,44 @@ namespace CaloriesCounter
         /// <param name="item">Item to insert</param>
         private async void InsertItem(Item item)
         {
-            await App.MobileService.GetTable<Item>().InsertAsync(item);
-
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            try
+            {
+                await App.MobileService.GetTable<Item>().InsertAsync(item);
+            }
+            catch (HttpRequestException)
+            {
+                string s = loader.GetString("HttpError");
+                ShowError(s);
+                return;
+            }
+           
             //the old add item goes to garbage automatically?
             newItem = new Item();
             this.GridNutrition.DataContext = newItem;
             this.GridPortion.DataContext = newItem;
             LayoutRoot.DataContext = newItem;
             textBlock.Visibility = Visibility.Visible;
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
             textBlock.Text = loader.GetString("AddingSuccess");
             var f = this.Resources["Storyboard1"] as Storyboard;
             if (f != null) f.Begin();
+        }
+
+
+        /// <summary>
+        /// Shows error message in a messagedialog
+        /// </summary>
+        /// <param name="error"></param>
+        private async void ShowError(string error)
+        {
+            try
+            {
+                await new MessageDialog(error).ShowAsync();
+            }
+            catch (UnauthorizedAccessException)
+            {
+
+            }
         }
 
     }

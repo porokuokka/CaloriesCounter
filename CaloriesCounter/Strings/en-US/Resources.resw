@@ -228,4 +228,7 @@
   <data name="Delete.Content" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="AddingError" xml:space="preserve">
+    <value>Adding was not a success for some reason. Please be patient and try again. Restarting the app might help.</value>
+  </data>
 </root>

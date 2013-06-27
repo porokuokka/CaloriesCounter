@@ -225,4 +225,7 @@
   <data name="Delete.Content" xml:space="preserve">
     <value>Poista</value>
   </data>
+  <data name="AddingError" xml:space="preserve">
+    <value>Lisäys ei onnistunut jostain syystä. Ole hyvä ja yritä uudelleen. Sovelluksen avaaminen uudelleen saattaa auttaa.</value>
+  </data>
 </root>

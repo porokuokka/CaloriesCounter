@@ -244,9 +244,9 @@ namespace CaloriesCounter.ViewModels
                 }
             }
 
-            public string CreateIntake(IntakeViewModel intake)
+            public bool CreateIntake(IntakeViewModel intake)
             {
-                string result = string.Empty;
+                bool result = false;
                 using (var db = new SQLite.SQLiteConnection(App.DBPath))
                 {
                     string change = string.Empty;
@@ -267,11 +267,11 @@ namespace CaloriesCounter.ViewModels
                                 Calories = intake.Calories
                             });
 
-                        result = "Success";
+                        result = true;
                     }
                     catch (Exception)
                     {
-                        result = "This intake was not saved.";
+                        result = false;
                     }
 
                     addUpDayTotals(day, intake);

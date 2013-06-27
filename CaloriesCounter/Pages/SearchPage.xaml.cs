@@ -1,4 +1,5 @@
 ﻿using CaloriesCounter.Models;
+using CaloriesCounter.Usercontrols;
 using CaloriesCounter.ViewModels;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -29,16 +31,12 @@ namespace CaloriesCounter
         private List<Item> items;
         private List<Item> search;
         private IMobileServiceTable<Item> itemTable = App.MobileService.GetTable<Item>();
-        private MessageBox msgb = new MessageBox();
         //private ProgressBar Progressbar = new ProgressBar();
         private AddControl add;
 
         public SearchPage()
         {
             this.InitializeComponent();
-            this.LayoutRoot.Children.Add(msgb);
-            
-           // LoadData();
         }
 
         /// <summary>
@@ -50,6 +48,22 @@ namespace CaloriesCounter
         {
             GridItemDetails.Visibility = Visibility.Collapsed;
             
+        }
+
+        /// <summary>
+        /// Shows error message in a messagedialog
+        /// </summary>
+        /// <param name="error"></param>
+        private async void ShowError(string error)
+        {
+            try
+            {
+                await new MessageDialog(error).ShowAsync();
+            }
+            catch (UnauthorizedAccessException)
+            {
+
+            }
         }
 
         #region search
@@ -87,7 +101,7 @@ namespace CaloriesCounter
                 ShowError(s);
             }
 
-            if (search.Count == 0) TextBlockSearch.Visibility = Visibility.Visible;
+            if (search == null || search.Count == 0) TextBlockSearch.Visibility = Visibility.Visible;
 
             ListViewItems.ItemsSource = search;
 
@@ -100,10 +114,6 @@ namespace CaloriesCounter
             Haku(text.Text);
         }
 
-        private void ShowError(string error)
-        {
-            msgb.ShowMessage(error);
-        }
 
         private void TextBoxSearch_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -163,14 +173,19 @@ namespace CaloriesCounter
             intake.DayId = App.CurrentDay.Id;
             intake.Name = item.Name;
             intake.Calories = (int)add.getCounterClass().CountedCalories;
-            Debug.Text = intake.CreateIntake(intake);
-            textBlock.Visibility = Visibility.Visible;
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            textBlock.Text = loader.GetString("AddingSuccess");
-            var f = this.Resources["Storyboard1"] as Storyboard;
-            if (f != null) f.Begin();
+            if (intake.CreateIntake(intake))
+            {
+                textBlock.Text = loader.GetString("AddingSuccess");
+                textBlock.Visibility = Visibility.Visible;
+                var f = this.Resources["Storyboard1"] as Storyboard;
+                if (f != null) f.Begin();
+            }
+            else
+            {
+                ShowError(loader.GetString("AddingError"));
+            }
         }
-
         #endregion
 
       
