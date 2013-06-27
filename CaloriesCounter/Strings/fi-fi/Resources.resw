@@ -228,4 +228,16 @@
   <data name="AddingError" xml:space="preserve">
     <value>Lisäys ei onnistunut jostain syystä. Ole hyvä ja yritä uudelleen. Sovelluksen avaaminen uudelleen saattaa auttaa.</value>
   </data>
+  <data name="ErrorRegex" xml:space="preserve">
+    <value>Kentässä on epävalideja merkkejä</value>
+  </data>
+  <data name="ErrorRequired" xml:space="preserve">
+    <value>Kentän sisältö tarvitaan</value>
+  </data>
+  <data name="AddHelp.Text" xml:space="preserve">
+    <value>Käytä desimaalipistettä desimaalien erotteluun!</value>
+  </data>
+  <data name="AddingInputError" xml:space="preserve">
+    <value>Raaka-ainetta ei voida lisätä. Täytäthän kaikki kentät!</value>
+  </data>
 </root>

@@ -231,4 +231,16 @@
   <data name="AddingError" xml:space="preserve">
     <value>Adding was not a success for some reason. Please be patient and try again. Restarting the app might help.</value>
   </data>
+  <data name="ErrorRegex" xml:space="preserve">
+    <value>Field contains invalid characters</value>
+  </data>
+  <data name="ErrorRequired" xml:space="preserve">
+    <value>Field is required</value>
+  </data>
+  <data name="AddHelp.Text" xml:space="preserve">
+    <value>Please use decimal point to separate the decimals!</value>
+  </data>
+  <data name="AddingInputError" xml:space="preserve">
+    <value>Ingredient could not be added. Please fill in all the fields!</value>
+  </data>
 </root>

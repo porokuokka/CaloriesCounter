@@ -1,8 +1,10 @@
 ﻿<Application
-    x:Class="CaloriesCounter.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:CaloriesCounter">
+    xmlns:local="using:CaloriesCounter"
+    xmlns:converters="using:CaloriesCounter.Converters" xmlns:Controls="using:CaloriesCounter.Controls"
+    x:Class="CaloriesCounter.App"
+    >
 
     <Application.Resources>
         <ResourceDictionary>
@@ -12,12 +14,13 @@
 Styles that define common aspects of the platform look and feel
 Required by Visual Studio project and item templates
 -->
+               
                 <ResourceDictionary Source="Common/StandardStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="Navigation" TargetType="TextBlock" BasedOn="{StaticResource BaselineTextStyle}">
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="Foreground" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
-                <Setter Property="Margin" Value="Auto"></Setter>
+                <Setter Property="Margin" Value="Auto"/>
                 <Setter Property="VerticalAlignment" Value="Center" />
                 <Setter Property="HorizontalAlignment" Value="Center" />
                 <Setter Property="TextAlignment" Value="Center" />
@@ -64,5 +67,6 @@ Required by Visual Studio project and item templates
             </ControlTemplate>
 
         </ResourceDictionary>
+
     </Application.Resources>
 </Application>

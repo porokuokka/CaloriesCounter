@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -146,7 +146,7 @@ namespace CaloriesCounter
                 if (help == String.Empty || value == null)
                 {
                     value = "";
-                  //  throw new Exception("Name must contain some letters");
+                    //  throw new Exception("Name must contain some letters");
                 }
 
                 name = value;

@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Page.Resources>
         <Storyboard x:Name="Storyboard1">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock">
@@ -21,9 +20,9 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Page.Resources>
-    
+
     <Grid x:Name="LayoutRoot" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        
+
         <Grid.Resources>
             <local:StringToFloatConverter x:Key="FloatConverter" />
         </Grid.Resources>
@@ -61,7 +60,7 @@
             </Border>
         </Grid>
         <TextBlock x:Uid="ItemName" HorizontalAlignment="Left" Margin="93,254,0,0" TextWrapping="Wrap" Text="Raaka-aineen nimi" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
-        <TextBox GotFocus="TextBox_GotFocus" HorizontalAlignment="Left" Margin="92,306,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Width="440"/>
+        <TextBox GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"  HorizontalAlignment="Left" Margin="92,306,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay}" VerticalAlignment="Top" Width="440"/>
         <Border BorderThickness="1" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" CornerRadius="10,10,10,10" Margin="88.309,379.877,870.309,21.877" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Border.RenderTransform>
                 <CompositeTransform Rotation="-2.229"/>
@@ -76,8 +75,8 @@
                 <TextBlock x:Uid="Carbohydrates" HorizontalAlignment="Left" Margin="248,150,0,0" TextWrapping="Wrap" Text="Hiilihydraatteja" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
                 <TextBox GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="44,154,0,0" TextWrapping="Wrap" Text="{Binding Carbohydrates, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="162"/>
                 <TextBlock HorizontalAlignment="Left" Margin="222,148,0,0" TextWrapping="Wrap" Text="g" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}" Width="13"/>
-                
-              
+
+
                 <TextBlock x:Uid="Protein" HorizontalAlignment="Left" Margin="248,200,0,0" TextWrapping="Wrap" Text="Proteiinia" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
                 <TextBox GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="44,204,0,0" TextWrapping="Wrap" Text="{Binding Protein, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="162"/>
                 <TextBlock HorizontalAlignment="Left" Margin="222,198,0,0" TextWrapping="Wrap" Text="g" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
@@ -89,6 +88,7 @@
                 <TextBox GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="44,304,0,0" TextWrapping="Wrap" Text="{Binding Fibre, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="162"/>
                 <TextBlock HorizontalAlignment="Left" Margin="220,247,0,0" TextWrapping="Wrap" Text="g" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
                 <TextBlock x:Uid="Fat" HorizontalAlignment="Left" Margin="255,299,0,0" TextWrapping="Wrap" Text="Kuitua" VerticalAlignment="Top" Style="{StaticResource PageSubheaderTextStyle}"/>
+                <TextBlock x:Uid="AddingHelp" HorizontalAlignment="Left" Margin="44,60,0,0" TextWrapping="Wrap" Text="Käytä desimaalipistettä desimaalien erotteluun!" VerticalAlignment="Top" Width="343" Height="26" Style="{StaticResource CaptionTextStyle}"/>
             </Grid>
         </Border>
 
@@ -115,7 +115,7 @@
                     </FlipView>
                 </Border>
                 <TextBlock x:Uid="Weights" HorizontalAlignment="Left" Margin="29,165,0,0" TextWrapping="Wrap" Text="painaa" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}"/>
-                <TextBox GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="28,224,0,0" TextWrapping="Wrap" Text="{Binding Portionweight, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="126"/>
+                <TextBox x:Name="PortionWeightInput" GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="28,224,0,0" TextWrapping="Wrap" Text="{Binding Portionweight, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="126"/>
             </Grid>
         </Border>
         <Button x:Uid="Add" x:Name="AddIngredient" Content="Lisää" Click="AddIngredient_Click"   HorizontalAlignment="Left" Margin="971.939,591.95,0,0" VerticalAlignment="Top" Template="{StaticResource ButtonControlTemplate1}" Height="88" Width="336.714" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">

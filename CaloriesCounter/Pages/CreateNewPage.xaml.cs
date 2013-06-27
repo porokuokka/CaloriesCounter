@@ -111,6 +111,9 @@ namespace CaloriesCounter
         private async void InsertItem(Item item)
         {
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            if (nameError) { ShowError(loader.GetString("AddingInputError")); return; }
+
             try
             {
                 await App.MobileService.GetTable<Item>().InsertAsync(item);
@@ -147,6 +150,21 @@ namespace CaloriesCounter
             catch (UnauthorizedAccessException)
             {
 
+            }
+        }
+
+        bool nameError = true;
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string s = (sender as TextBox).Text;
+            if (String.IsNullOrWhiteSpace(s))
+            {
+                nameError = true;
+            }
+            else
+            {
+                nameError = false;
             }
         }
 
