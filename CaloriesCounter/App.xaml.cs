@@ -19,7 +19,7 @@ using CaloriesCounter.Models;
 using CaloriesCounter.ViewModels;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
-/*TODO: check values on create new
+/*TODO:
  * Create icons
  * Settings like about maybe should be done
  * Publish
