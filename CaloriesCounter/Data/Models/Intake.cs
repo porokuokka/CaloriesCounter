@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 
-namespace CaloriesCounter.Models
+namespace CaloriesCounter.Data.Models
 {
     [Table("Intake")]
-    class Intake
+    public class Intake
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

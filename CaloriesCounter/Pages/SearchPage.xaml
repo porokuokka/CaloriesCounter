@@ -132,7 +132,7 @@
                 </Grid>
             </Border>
             <TextBlock x:Uid="SearchError" Visibility="Collapsed" x:Name="TextBlockSearch" HorizontalAlignment="Left" Margin="90,277,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="60" Width="350"/>
-            <TextBlock x:Name="Debug" HorizontalAlignment="Left" Margin="412,144,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="25" Width="221" Style="{StaticResource PageSubheaderTextStyle}" />
+            <TextBlock x:Name="Debug" Visibility="Collapsed" HorizontalAlignment="Left" Margin="412,144,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="25" Width="221" Style="{StaticResource PageSubheaderTextStyle}" />
             <TextBlock x:Name="textBlock" Visibility="Collapsed" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Height="169" Width="509" Style="{StaticResource HeaderTextStyle}" Margin="447,280,410,319" />
         </Grid>
     </Grid>

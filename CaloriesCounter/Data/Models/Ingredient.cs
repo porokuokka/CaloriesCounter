@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 
-namespace CaloriesCounter.Models
+namespace CaloriesCounter.Data.Models
 {
     class Ingredient
     {

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="48514Aarukka.Countem" Publisher="CN=8D72CB61-FBB0-45AB-B9A1-D5D834F2BA59" Version="1.0.0.4" />
+  <Identity Name="48514Aarukka.Countem" Publisher="CN=8D72CB61-FBB0-45AB-B9A1-D5D834F2BA59" Version="1.0.0.6" />
   <Properties>
     <DisplayName>Count 'em!</DisplayName>
     <PublisherDisplayName>Aarukka</PublisherDisplayName>
@@ -15,9 +15,12 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="CaloriesCounter.App">
-      <VisualElements DisplayName="Count 'em!" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="CaloriesCounter" ForegroundText="light" BackgroundColor="#464646">
+      <VisualElements DisplayName="Count 'em!" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="CaloriesCounter" ForegroundText="light" BackgroundColor="#FFFFFF">
         <DefaultTile ShowName="allLogos" />
         <SplashScreen Image="Assets\SplashScreen.png" />
+        <InitialRotationPreference>
+          <Rotation Preference="landscape" />
+        </InitialRotationPreference>
       </VisualElements>
     </Application>
   </Applications>

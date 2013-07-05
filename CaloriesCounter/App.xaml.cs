@@ -15,8 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using CaloriesCounter.Models;
-using CaloriesCounter.ViewModels;
+using CaloriesCounter.Data.Models;
+using CaloriesCounter.Data;
 
 ///Author: Iida Porokuokka
 namespace CaloriesCounter
@@ -30,8 +30,9 @@ namespace CaloriesCounter
         public static MobileServiceClient MobileService =
             new MobileServiceClient("https://kalorilaskuri.azure-mobile.net/", "XEwGtjLRTwuzVwkZjTojpRtQeEcAfb79");
 
-        public static string DBPath = Windows.Storage.ApplicationData.Current.LocalFolder.Path + "\\caloriecounter.sqlite";
-        public static DayViewModel CurrentDay { get; set; }
+        public static Day CurrentDay { get; set; }
+
+        public static DataSource dataSource;
 
         //public DateTime SelectedDay { get; set; }
 
@@ -53,20 +54,6 @@ namespace CaloriesCounter
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            
-            // Initialize the database if necessary
-            using (var db = new SQLite.SQLiteConnection(DBPath))
-            {
-                // Create the tables if they don't exist
-                db.CreateTable<Day>();
-                db.CreateTable<Intake>();
-                Day day = new Day();
-                day.Date = DateTime.Today;
-                db.Insert(day);
-            }
-
-            CurrentDay = DayViewModel.GetDayByDate(DateTime.Today);
-
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -96,10 +83,13 @@ namespace CaloriesCounter
                 }
             }
 
-            
-
             // Ensure the current window is active
             Window.Current.Activate();
+
+            dataSource = new DataSource();
+            dataSource.InitDatabase();
+            dataSource.CreateTables();
+
         }
 
 

@@ -1,6 +1,4 @@
-﻿using CaloriesCounter.Models;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,9 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using CaloriesCounter.ViewModels;
 using SQLite;
 using System.Collections.ObjectModel;
+using CaloriesCounter.Data.Models;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,9 +25,7 @@ namespace CaloriesCounter
     /// </summary>
     public sealed partial class DiaryPage : Page
     {
-        private DayViewModel dayViewModel;
-        private IntakesViewModel Intakes;
-        private List<IntakeViewModel> intks;
+        private List<Intake> xintakes;
 
         public DiaryPage()
         {
@@ -39,8 +35,37 @@ namespace CaloriesCounter
             changeDate(App.CurrentDay.Date);
         }
 
-        private void changeDate(DateTime date)
+        /// <summary>
+        /// Changes date to given one,
+        /// creates day to database if it doesn't
+        /// exist yet
+        /// </summary>
+        /// <param name="date"></param>
+        private async void changeDate(DateTime date)
         {
+            Day day = new Day
+            {
+                Date = date
+            };
+
+            try
+            {
+                var lookup = App.dataSource.Days.Items.Where(d => d.Date == date)
+                    .ToListAsync().GetAwaiter().GetResult().First();
+                day = (Day)lookup;
+            }
+
+            catch (ArgumentNullException)
+            {
+                App.dataSource.Days.Create(day).GetAwaiter().GetResult();
+            }
+
+            App.CurrentDay = day;
+            xintakes = await App.dataSource.Intakes.Items.Where(i => i.DayId == day.Id).ToListAsync();
+            ListViewDays.ItemsSource = xintakes;
+            TextBlockDate.Text = convertDate(date);
+
+            /*
             //DatePickerDiary.Date = date;
             App.CurrentDay = DayViewModel.GetDayByDate(date);
             dayViewModel = App.CurrentDay;
@@ -50,6 +75,7 @@ namespace CaloriesCounter
             Intakes = new IntakesViewModel();
             intks = Intakes.GetIntakesList(dayViewModel.Id);
             ListViewDays.ItemsSource = intks;
+             * */
         }
 
         private string convertDate(DateTime date)
@@ -97,11 +123,11 @@ namespace CaloriesCounter
 
         #endregion
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private async void Delete_Click(object sender, RoutedEventArgs e)
         {
-            IntakeViewModel intake = (IntakeViewModel)(sender as Button).DataContext;
-            intake.DeleteIntake(intake);
-            changeDate(App.CurrentDay.Date);
+            Intake intake = (Intake)(sender as Button).DataContext;
+            await App.dataSource.Intakes.Delete(intake);
+           // changeDate(App.CurrentDay.Date);
         }
 
 

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CaloriesCounter.Models
+namespace CaloriesCounter.Data.Models
 {
     [Table("Day")]
         public class Day

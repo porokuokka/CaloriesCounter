@@ -102,6 +102,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Data\Datasource.cs" />
+    <Compile Include="Data\Repository.cs" />
+    <Compile Include="Data\Tests\DataUnitTests.cs" />
+    <Compile Include="lib\sqlite_master.cs" />
     <Compile Include="Pages\CreateNewPage.xaml.cs">
       <DependentUpon>CreateNewPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -131,21 +135,16 @@
     <Compile Include="Usercontrols\MessageBox.xaml.cs">
       <DependentUpon>MessageBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Day.cs" />
-    <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Models\Intake.cs" />
+    <Compile Include="Data\Models\Day.cs" />
+    <Compile Include="Data\Models\Ingredient.cs" />
+    <Compile Include="Data\Models\Intake.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pages\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SQLite.cs" />
-    <Compile Include="SQLiteAsync.cs" />
+    <Compile Include="lib\SQLite.cs" />
+    <Compile Include="lib\SQLiteAsync.cs" />
     <Compile Include="StringToFloatConverter.cs" />
-    <Compile Include="ViewModels\DaysViewModel.cs" />
-    <Compile Include="ViewModels\DayViewModel.cs" />
-    <Compile Include="ViewModels\IntakesViewModel.cs" />
-    <Compile Include="ViewModels\IntakeViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -216,8 +215,9 @@
     <Reference Include="Microsoft.WindowsAzure.Mobile.Ext">
       <HintPath>..\packages\WindowsAzure.MobileServices.1.0.0\lib\netcore45\Microsoft.WindowsAzure.Mobile.Ext.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\netcore45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="StoreAppLib">
       <HintPath>..\packages\StoreAppLib.1.1.3.0\lib\netcore45\StoreAppLib.dll</HintPath>

@@ -1,6 +1,5 @@
-﻿using CaloriesCounter.Models;
+﻿using CaloriesCounter.Data.Models;
 using CaloriesCounter.Usercontrols;
-using CaloriesCounter.ViewModels;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
@@ -154,7 +153,7 @@ namespace CaloriesCounter
 
         private void ButtonAddToDiary_Click(object sender, RoutedEventArgs e)
         {
-            IntakeViewModel intake = new IntakeViewModel();
+            Intake intake = new Intake();
             Item item = ListViewItems.SelectedItem as Item;
             intake.Grams = add.getCounterClass().Grams;
             intake.Carbohydrates = item.Carbohydrates / 100F * intake.Grams;
@@ -166,7 +165,7 @@ namespace CaloriesCounter
             intake.Name = item.Name;
             intake.Calories = (int)add.getCounterClass().CountedCalories;
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            if (intake.CreateIntake(intake))
+            if (App.dataSource.Intakes.Create(intake).IsCompleted)
             {
                 textBlock.Text = loader.GetString("AddingSuccess");
                 textBlock.Visibility = Visibility.Visible;
