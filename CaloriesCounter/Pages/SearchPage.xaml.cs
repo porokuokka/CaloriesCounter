@@ -28,9 +28,7 @@ namespace CaloriesCounter
     /// </summary>
     public sealed partial class SearchPage : Page
     {
-        private List<Item> items;
         private List<Item> search;
-        private IMobileServiceTable<Item> itemTable = App.MobileService.GetTable<Item>();
         //private ProgressBar Progressbar = new ProgressBar();
         private AddControl add;
 
@@ -62,37 +60,19 @@ namespace CaloriesCounter
             }
             catch (UnauthorizedAccessException)
             {
-
+                //TODO: do something
             }
         }
 
         #region search
-        /// <summary>
-        /// Loads items from mobile service to itemslist
-        /// </summary>
-        public async void LoadData()
-        {
-            try
-            {
-                items = await itemTable.ToListAsync();
-            }
-            catch (HttpRequestException)
-            {
-                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-                string s = loader.GetString("HttpError");
-                ShowError(s);
-            }
-            //testing
-            ListViewItems.ItemsSource = items;
-        }
 
-        private async void Haku(string hakusana)
+        private async void Search(string hakusana)
         {
             search = null;
             ListViewItems.ItemsSource = null;
             try
             {
-                search = await itemTable.Where(item => item.Name.Contains(hakusana)).ToListAsync();
+                search = await App.MobileService.GetTable<Item>().Where(item => item.Name.Contains(hakusana)).ToListAsync();
             }
             catch (HttpRequestException)
             {
@@ -107,11 +87,23 @@ namespace CaloriesCounter
 
         }
 
+        /// <summary>
+        /// Takes the keywords from search-textbox and
+        /// delegates searching for Search-method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBoxSearch_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             TextBox text = (TextBox)sender;
-            TextBlockSearch.Visibility = Visibility.Collapsed;
-            Haku(text.Text);
+            
+            if (!String.IsNullOrWhiteSpace(text.Text))
+            {
+                Debug.Text = text.Text;
+                TextBlockSearch.Visibility = Visibility.Collapsed;
+                Search(text.Text);
+            }
+
         }
 
 
