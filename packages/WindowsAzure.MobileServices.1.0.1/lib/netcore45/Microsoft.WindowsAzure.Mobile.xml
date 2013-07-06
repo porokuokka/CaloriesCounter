@@ -298,22 +298,6 @@
             loaded incrementally.
             </summary>
         </member>
-        <member name="T:Microsoft.WindowsAzure.MobileServices.HttpMessageHandlerExtensions">
-            <summary>
-            Extension method to wire up <see cref="T:System.Net.Http.HttpMessageHandler"/> instances.
-            </summary>
-        </member>
-        <member name="M:Microsoft.WindowsAzure.MobileServices.HttpMessageHandlerExtensions.CreatePipeline(System.Collections.Generic.IEnumerable{System.Net.Http.HttpMessageHandler})">
-            <summary>
-            Transform an IEnumerable of <see cref="T:System.Net.Http.HttpMessageHandler"/>s into
-            a chain of <see cref="T:System.Net.Http.HttpMessageHandler"/>s.
-            </summary>
-            <param name="handlers">
-            Chain of <see cref="T:System.Net.Http.HttpMessageHandler"/> instances. 
-            All but the last should be <see cref="T:System.Net.Http.DelegatingHandler"/>s. 
-            </param>
-            <returns>A chain of <see cref="T:System.Net.Http.HttpMessageHandler"/>s</returns>
-        </member>
         <member name="T:Microsoft.WindowsAzure.MobileServices.MobileServiceClientExtensions">
             <summary>
              Provides extension methods on <see cref="T:Microsoft.WindowsAzure.MobileServices.MobileServiceClient"/>.
@@ -1194,7 +1178,7 @@
             by the users, since they're "system" operations, so we use a separate
             client for them.</remarks>
         </member>
-        <member name="M:Microsoft.WindowsAzure.MobileServices.MobileServiceHttpClient.#ctor(Microsoft.WindowsAzure.MobileServices.MobileServiceClient,System.Net.Http.HttpMessageHandler)">
+        <member name="M:Microsoft.WindowsAzure.MobileServices.MobileServiceHttpClient.#ctor(Microsoft.WindowsAzure.MobileServices.MobileServiceClient,System.Collections.Generic.IEnumerable{System.Net.Http.HttpMessageHandler})">
             <summary>
             Instantiates a new <see cref="T:Microsoft.WindowsAzure.MobileServices.MobileServiceHttpClient"/>, 
             which does all the request to a mobile service.
@@ -1202,8 +1186,9 @@
             <param name="client">
             The client associated with this <see cref="T:Microsoft.WindowsAzure.MobileServices.MobileServiceHttpClient"/>.
             </param>
-            <param name="handler">
-            An http handler.
+            <param name="handlers">
+            Chain of <see cref="T:System.Net.Http.HttpMessageHandler"/> instances. 
+            All but the last should be <see cref="T:System.Net.Http.DelegatingHandler"/>s. 
             </param>
         </member>
         <member name="M:Microsoft.WindowsAzure.MobileServices.MobileServiceHttpClient.RequestWithoutHandlersAsync(System.Net.Http.HttpMethod,System.String,System.String)">
@@ -1380,6 +1365,25 @@
             </param>
             <returns>
             An <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.MobileServiceHttpClient.CreatePipeline(System.Collections.Generic.IEnumerable{System.Net.Http.HttpMessageHandler})">
+            <summary>
+            Transform an IEnumerable of <see cref="T:System.Net.Http.HttpMessageHandler"/>s into
+            a chain of <see cref="T:System.Net.Http.HttpMessageHandler"/>s.
+            </summary>
+            <param name="handlers">
+            Chain of <see cref="T:System.Net.Http.HttpMessageHandler"/> instances. 
+            All but the last should be <see cref="T:System.Net.Http.DelegatingHandler"/>s. 
+            </param>
+            <returns>A chain of <see cref="T:System.Net.Http.HttpMessageHandler"/>s</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.MobileServiceHttpClient.GetDefaultHttpClientHandler">
+            <summary>
+            Returns a default HttpClientHandler that supports automatic decompression.
+            </summary>
+            <returns>
+            A default HttpClientHandler that supports automatic decompression
             </returns>
         </member>
         <member name="M:Microsoft.WindowsAzure.MobileServices.MobileServiceHttpClient.GetUserAgentHeader">
@@ -2798,6 +2802,11 @@
             members used within expressions.
             </summary>
         </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.FilterBuildingExpressionVisitor.#cctor">
+            <summary>
+            The static constructor for the FilterBuildingExpressionVisitor
+            </summary>
+        </member>
         <member name="M:Microsoft.WindowsAzure.MobileServices.FilterBuildingExpressionVisitor.#ctor(Microsoft.WindowsAzure.MobileServices.MobileServiceContractResolver)">
             <summary>
             Initializes a new instance of the FilterBuildingExpressionVisitor
@@ -3027,85 +3036,6 @@
             The ordered collection of arguments for the given OData filter method.
             </returns>
         </member>
-        <member name="M:Microsoft.WindowsAzure.MobileServices.FilterBuildingExpressionVisitor.GetBaseTypesAndSelf(System.Type)">
-            <summary>
-            Get a sequence of types from the given type up through the base
-            type.  This is helpful given that all of the new reflection APIs
-            only provide DeclaredFoos, but you can use SelectMany with this
-            sequence to get all of the inherited Foos.
-            </summary>
-            <param name="type">
-            The type to get the hierarchy for.
-            </param>
-            <returns>
-            Sequence describing the type hierarchy.
-            </returns>
-        </member>
-        <member name="M:Microsoft.WindowsAzure.MobileServices.FilterBuildingExpressionVisitor.GetMethods(System.Type,System.String,System.Type[])">
-            <summary>
-            Find a method by type and name.
-            </summary>
-            <param name="type">
-            The type with the method.
-            </param>
-            <param name="name">
-            The name of the method.
-            </param>
-            <param name="parameterTypes">
-            The parameters to the method.
-            </param>
-            <returns>
-            A sequence of MethodInfos.
-            </returns>
-        </member>
-        <member name="M:Microsoft.WindowsAzure.MobileServices.FilterBuildingExpressionVisitor.FindInstanceMethod(System.Type,System.String,System.Type[])">
-            <summary>
-            Find an instance method info by type and name.
-            </summary>
-            <param name="type">
-            The type declaring the method.
-            </param>
-            <param name="name">
-            The name of the method.
-            </param>
-            <param name="parameterTypes">
-            Types of the method parameters.
-            </param>
-            <returns>
-            The desired MethodInfo or null.
-            </returns>
-        </member>
-        <member name="M:Microsoft.WindowsAzure.MobileServices.FilterBuildingExpressionVisitor.FindInstanceProperty(System.Type,System.String)">
-            <summary>
-            Find an instance property info by type and name.
-            </summary>
-            <param name="type">
-            The type declaring the property.
-            </param>
-            <param name="name">
-            The name of the property.
-            </param>
-            <returns>
-            The desired property's getter's MethodInfo or null.
-            </returns>
-        </member>
-        <member name="M:Microsoft.WindowsAzure.MobileServices.FilterBuildingExpressionVisitor.FindStaticMethod(System.Type,System.String,System.Type[])">
-            <summary>
-            Find a static method info by type and name.
-            </summary>
-            <param name="type">
-            The type declaring the method.
-            </param>
-            <param name="name">
-            The name of the method.
-            </param>
-            <param name="parameterTypes">
-            Types of the method parameters.
-            </param>
-            <returns>
-            The desired MethodInfo or null.
-            </returns>
-        </member>
         <member name="M:Microsoft.WindowsAzure.MobileServices.FilterBuildingExpressionVisitor.ToRoundtripDateString(System.DateTime)">
             <summary>
             Convert a date to the ISO 8601 roundtrip format supported by the
@@ -3314,6 +3244,83 @@
             <summary>
             Gets the MobileServiceTable being queried.
             </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.MobileServices.MemberInfoKey">
+            <summary>
+             Encapsulates information about a class member that can be used as a key
+             in a dictionary without performing a reflection call to instantiate an 
+             actual MemberInfo instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.MemberInfoKey.#ctor(System.Reflection.MemberInfo)">
+            <summary>
+            Instantiates an instance of a <see cref="T:Microsoft.WindowsAzure.MobileServices.MemberInfoKey"/> from a
+            <see cref="T:System.Reflection.MemberInfo"/>.
+            </summary>
+            <param name="memberInfo">
+            The <see cref="T:System.Reflection.MemberInfo"/> instance that provides information
+            about the class member.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.MemberInfoKey.#ctor(System.Type,System.String,System.Boolean,System.Boolean,System.Type[])">
+            <summary>
+            Instantiates an instance of a <see cref="T:Microsoft.WindowsAzure.MobileServices.MemberInfoKey"/> from information
+            about a class member wihtout having to create a <see cref="T:System.Reflection.MemberInfo"/> instance.
+            </summary>
+            <param name="type">
+            The type of the class that contains the member.
+            </param>
+            <param name="memberName">
+            The name of the class member.
+            </param>
+            <param name="isMethod">
+            <code>true</code> if the member is a method and <code>false</code> 
+            if the member is a property.
+            </param>
+            <param name="isInstance">
+            <code>true</code> is the member is an instance member and <code>false</code> 
+            if the member is a class member.
+            </param>
+            <param name="parameters">
+            An array of types for the parameters of the member if the member is a method. 
+            Should be an empty array if the member is a property.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.MemberInfoKey.Equals(Microsoft.WindowsAzure.MobileServices.MemberInfoKey)">
+            <summary>
+            Returns <code>true</code> if the other <see cref="T:Microsoft.WindowsAzure.MobileServices.MemberInfoKey"/> instance
+            represents the same class member as this instance.
+            </summary>
+            <param name="other">
+            The other <see cref="T:Microsoft.WindowsAzure.MobileServices.MemberInfoKey"/> to check equivalance against.
+            </param>
+            <returns>
+            <code>true</code> if the other <see cref="T:Microsoft.WindowsAzure.MobileServices.MemberInfoKey"/> instance
+            represents the same class member as this instance.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.MemberInfoKey.Equals(System.Object)">
+            <summary>
+            Returns <code>true</code> if the object is a <see cref="T:Microsoft.WindowsAzure.MobileServices.MemberInfoKey"/> instance
+            that represents the same class member as this instance.
+            </summary>
+            <param name="obj">
+            The object to check equivalance against.
+            </param>
+            <returns>
+            <code>true</code> if the object is a <see cref="T:Microsoft.WindowsAzure.MobileServices.MemberInfoKey"/> instance
+            that represents the same class member as the instance.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.MemberInfoKey.GetHashCode">
+            <summary>
+            Returns a hashcode for the instance that is based on the
+            type and name of the class member.
+            </summary>
+            <returns>
+            A hashcode for the instance that is based on the
+            type and name of the class member.
+            </returns>
         </member>
         <member name="T:Microsoft.WindowsAzure.MobileServices.MobileServiceTableQuery`1">
             <summary>
@@ -3585,9 +3592,9 @@
             Gets or sets the number of elements to take.
             </summary>
         </member>
-        <member name="P:Microsoft.WindowsAzure.MobileServices.MobileServiceTableQueryDescription.Projection">
+        <member name="P:Microsoft.WindowsAzure.MobileServices.MobileServiceTableQueryDescription.Projections">
             <summary>
-            Gets or sets a projection that should be applied to each element of
+            Gets a collection of projections that should be applied to each element of
             the query.
             </summary>
         </member>

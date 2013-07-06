@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>WindowsAzure.MobileServices</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>Windows Azure Mobile Services</title>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>

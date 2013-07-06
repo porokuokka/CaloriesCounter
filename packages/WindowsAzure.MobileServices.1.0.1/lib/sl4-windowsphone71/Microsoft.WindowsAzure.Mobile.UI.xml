@@ -126,6 +126,12 @@
             Initiatlizes the page by hooking up some event handlers.
             </summary>
         </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.LoginPage.BrowserControl_LoadCompleted(System.Object,System.Windows.Navigation.NavigationEventArgs)">
+            <summary>
+            Handler for the browser control's load completed event.  We use this to detect when
+            to hide the progress bar and show the browser control.
+            </summary>
+        </member>
         <member name="M:Microsoft.WindowsAzure.MobileServices.LoginPage.OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs)">
             <summary>
             Initiates the authentication operation by pointing the browser control
@@ -159,6 +165,16 @@
         <member name="M:Microsoft.WindowsAzure.MobileServices.LoginPage.BrowserControl_NavigationFailed(System.Object,System.Windows.Navigation.NavigationFailedEventArgs)">
             <summary>
             Handler for the browser control's navigation failed event.  We use this to detect errors
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.LoginPage.ShowProgressBar">
+            <summary>
+            Shows the progress bar and hides the browser control.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.MobileServices.LoginPage.HideProgressBar">
+            <summary>
+            Hides the progress bar and shows the browser control.
             </summary>
         </member>
         <member name="M:Microsoft.WindowsAzure.MobileServices.LoginPage.InitializeComponent">
