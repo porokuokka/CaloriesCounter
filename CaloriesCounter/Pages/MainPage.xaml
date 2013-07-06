@@ -10,8 +10,8 @@
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid>
-            <TextBlock x:Uid="WelcomeHeader" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tervetuloa käyttämään kalorilaskuria!" VerticalAlignment="Top" Height="83" Width="491" Style="{StaticResource SubheaderTextStyle}" Margin="112,148,0,0"/>
-            <TextBlock x:Uid="Welcome" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tämä on hieno juttu." VerticalAlignment="Bottom" Height="557" Width="419" Style="{StaticResource SubheaderTextStyle}" Margin="114,194,0,0"/>
+            <TextBlock x:Uid="WelcomeHeader" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tervetuloa käyttämään kalorilaskuria!" VerticalAlignment="Top" Height="83" Width="491" Style="{StaticResource SubheaderTextStyle}" Margin="76,194,0,0"/>
+            <TextBlock x:Uid="Welcome" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tämä on hieno juttu." VerticalAlignment="Bottom" Height="557" Width="419" Style="{StaticResource SubheaderTextStyle}" Margin="75,0,0,-38"/>
         </Grid>
 
         <!--Scrollviewer not in use while having only 3 items on it, add an indicator for the user if adding new features-->
@@ -59,7 +59,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="96,72,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource ApplicationHeader}" Height="52" Width="564"/>
+        <TextBlock x:Uid="ApplicationName" HorizontalAlignment="Left" Margin="96,72,0,0" TextWrapping="Wrap" Text="Kalorilaskuri!" VerticalAlignment="Top" Style="{StaticResource ApplicationHeader}" Height="84" Width="564"/>
         <!--</ScrollViewer>-->
     </Grid>
 </Page>
