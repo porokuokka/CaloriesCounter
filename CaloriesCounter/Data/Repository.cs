@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CaloriesCounter.lib;
 using SQLite;
+using CaloriesCounter.Data.Models;
 
 namespace CaloriesCounter.Data
 {

@@ -9,6 +9,7 @@
     mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        
         <ListView x:Name="ListViewDays" HorizontalAlignment="Left" Height="519.797" Margin="760.925,198.005,0,0" VerticalAlignment="Top" Width="486.555" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <ListView.RenderTransform>
                 <CompositeTransform Rotation="6.699"/>
@@ -58,6 +59,7 @@
             </Border>
 
         </Grid>
+        
         <Controls1:DatePicker x:Name="DatePickerDiary" SelectionChanged="DatePickerDiary_SelectionChanged" HorizontalAlignment="Left" Margin="553.098,262.171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167.804" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Height="47.658">
             <Controls1:DatePicker.RenderTransform>
                 <CompositeTransform Rotation="-5.793"/>
@@ -71,6 +73,9 @@
 
         </Border>
         <Grid x:Name="GridDayTotal">
+            <Grid.Resources>
+                <local:StringToFloatConverter x:Name="StringToFloatConverter" />
+            </Grid.Resources>
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="421.972" Margin="44.486,291.364,0,0" VerticalAlignment="Top" Width="470.84" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
                     <CompositeTransform Rotation="-4.489"/>
@@ -85,7 +90,7 @@
             </Border>
             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" CornerRadius="10,10,10,10" HorizontalAlignment="Left" Height="64.108" Margin="541.663,256.986,0,0" VerticalAlignment="Top" Width="189.172" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
                 <Border.RenderTransform>
-                    <CompositeTransform Rotation="-5.401"/>                         
+                    <CompositeTransform Rotation="-5.401"/>
                 </Border.RenderTransform>
 
             </Border>
@@ -100,7 +105,7 @@
                 <TextBlock.RenderTransform>
                     <CompositeTransform Rotation="-5.908" TranslateX="-2" TranslateY="8"/>
                 </TextBlock.RenderTransform>
-        	<Run Text="{Binding Carbohydrates}"/>
+        	<Run Text="{Binding Carbohydrates, Converter={StaticResource StringToFloatConverter}}"/>
         	<Run Text=" g "/>
             <Run x:Uid="Carbohydrates" Text="Hiilihydraatteja"></Run>
             </TextBlock>

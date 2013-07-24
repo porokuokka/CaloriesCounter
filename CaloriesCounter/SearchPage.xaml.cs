@@ -63,6 +63,7 @@ namespace CaloriesCounter
             }
         }
 
+
         #region search
 
         private async void Search(string hakusana)
@@ -151,32 +152,55 @@ namespace CaloriesCounter
             GridAdd.Children.Add(add);
         }
 
+        /// <summary>
+        /// Adds item to diary with selected intake calories
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonAddToDiary_Click(object sender, RoutedEventArgs e)
         {
             Intake intake = new Intake();
             Item item = ListViewItems.SelectedItem as Item;
+            //get selected grams, cals etc.
             intake.Grams = add.getCounterClass().Grams;
             intake.Carbohydrates = item.Carbohydrates / 100F * intake.Grams;
             intake.Protein = item.Protein / 100F * intake.Grams;
             intake.Fat = item.Fat / 100F * intake.Grams;
             intake.Fibre = item.Fibre / 100F * intake.Grams;
-            intake.Id = 0;
             intake.DayId = App.CurrentDay.Id;
             intake.Name = item.Name;
             intake.Calories = (int)add.getCounterClass().CountedCalories;
+
+            //add intake to db
             var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            if (App.dataSource.Intakes.Create(intake).IsCompleted)
+
+            try
             {
-                textBlock.Text = loader.GetString("AddingSuccess");
-                textBlock.Visibility = Visibility.Visible;
-                var f = this.Resources["Storyboard1"] as Storyboard;
-                if (f != null) f.Begin();
+                App.Helper.addIntake(intake);
             }
-            else
+
+            catch (ArgumentException)
             {
                 ShowError(loader.GetString("AddingError"));
+                this.Frame.Navigate(typeof(SearchPage));
+            }
+              
+            //Indicate adding succeeded
+                   textBlock.Text = loader.GetString("AddingSuccess");
+                   textBlock.Visibility = Visibility.Visible;
+                   var f = this.Resources["Storyboard1"] as Storyboard;
+                   if (f != null) f.Begin();
+                   f.Completed += f_Completed;           
+        }
+
+        void f_Completed(object sender, object e)
+        {
+            if (this.Frame.CurrentSourcePageType == typeof(SearchPage))
+            {
+                this.Frame.Navigate(typeof(SearchPage));
             }
         }
+
         #endregion
 
       

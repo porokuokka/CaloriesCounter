@@ -11,19 +11,20 @@ namespace CaloriesCounter.Data
 {
     public class DataSource : IDisposable
     {
-        private const string DBFILENAME = "mySQLite.db";
+        private const string DBFILENAME = "mySQLite6.db";
         protected StorageFolder UserFolder { get; set; }
         protected SQLiteAsyncConnection Db { get; set; }
 
         public Repositority<Day> Days { get; set; }
         public Repositority<Intake> Intakes { get; set; }
 
+
         public DataSource()
         {
             this.UserFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
             var dbPath = Path.Combine(UserFolder.Path, DBFILENAME);
             this.Db = new SQLiteAsyncConnection(dbPath);
-
+            
             Days = new Repositority<Day>(Db);
             Intakes = new Repositority<Intake>(Db);
         }

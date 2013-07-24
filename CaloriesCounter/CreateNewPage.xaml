@@ -116,6 +116,7 @@
                 </Border>
                 <TextBlock x:Uid="Weights" HorizontalAlignment="Left" Margin="29,165,0,0" TextWrapping="Wrap" Text="painaa" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}"/>
                 <TextBox x:Name="PortionWeightInput" GotFocus="TextBox_GotFocus" InputScope="Number" HorizontalAlignment="Left" Margin="28,224,0,0" TextWrapping="Wrap" Text="{Binding Portionweight, Mode=TwoWay, Converter={StaticResource FloatConverter}}" VerticalAlignment="Top" Width="126"/>
+                <TextBlock HorizontalAlignment="Left" Margin="167,219,0,0" TextWrapping="Wrap" Text="g" VerticalAlignment="Top" Style="{StaticResource SubheaderTextStyle}" Width="17"/>
             </Grid>
         </Border>
         <Button x:Uid="Add" x:Name="AddIngredient" Content="Lisää" Click="AddIngredient_Click"   HorizontalAlignment="Left" Margin="971.939,591.95,0,0" VerticalAlignment="Top" Template="{StaticResource ButtonControlTemplate1}" Height="88" Width="336.714" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">

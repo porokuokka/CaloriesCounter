@@ -30,9 +30,10 @@ namespace CaloriesCounter
         public static MobileServiceClient MobileService =
             new MobileServiceClient("https://kalorilaskuri.azure-mobile.net/", "XEwGtjLRTwuzVwkZjTojpRtQeEcAfb79");
 
+        //should they maybe not be static?
         public static Day CurrentDay { get; set; }
-
         public static DataSource dataSource;
+        public static RepoHelper Helper;
 
         //public DateTime SelectedDay { get; set; }
 
@@ -54,6 +55,7 @@ namespace CaloriesCounter
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
+            
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -89,7 +91,19 @@ namespace CaloriesCounter
             dataSource = new DataSource();
             dataSource.InitDatabase();
             dataSource.CreateTables();
+            Helper = new RepoHelper(dataSource);
 
+            DateTime date = DateTime.Today;
+            Day day = new Day();
+            day = App.Helper.checkDay(date);
+            if (day == null)
+            {
+                day = new Day();
+                day.Date = date;
+                Helper.createDay(day);
+            }
+
+            App.CurrentDay = day;
         }
 
 

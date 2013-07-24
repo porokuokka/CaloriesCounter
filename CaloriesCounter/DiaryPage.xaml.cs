@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using SQLite;
 using System.Collections.ObjectModel;
 using CaloriesCounter.Data.Models;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -32,7 +33,18 @@ namespace CaloriesCounter
             this.InitializeComponent();
 
             DatePickerDiary.Date = App.CurrentDay.Date;
-            changeDate(App.CurrentDay.Date);
+            RefreshDay();
+        }
+
+        /// <summary>
+        /// Refreshes day totals and intakelist
+        /// </summary>
+        public async void RefreshDay()
+        {
+            TextBlockDate.Text = convertDate(App.CurrentDay.Date);
+            GridDayTotal.DataContext = App.CurrentDay;
+            xintakes = await App.dataSource.Intakes.Items.Where(i => i.DayId == App.CurrentDay.Id).ToListAsync();
+            ListViewDays.ItemsSource = xintakes;
         }
 
         /// <summary>
@@ -41,41 +53,19 @@ namespace CaloriesCounter
         /// exist yet
         /// </summary>
         /// <param name="date"></param>
-        private async void changeDate(DateTime date)
+        private void changeDate(DateTime date)
         {
-            Day day = new Day
+            Day day;
+            day = App.Helper.checkDay(date);
+            if (day == null)
             {
-                Date = date
-            };
-
-            try
-            {
-                var lookup = App.dataSource.Days.Items.Where(d => d.Date == date)
-                    .ToListAsync().GetAwaiter().GetResult().First();
-                day = (Day)lookup;
-            }
-
-            catch (ArgumentNullException)
-            {
-                App.dataSource.Days.Create(day).GetAwaiter().GetResult();
+                day = new Day();
+                day.Date = date;
+                App.Helper.createDay(day);
             }
 
             App.CurrentDay = day;
-            xintakes = await App.dataSource.Intakes.Items.Where(i => i.DayId == day.Id).ToListAsync();
-            ListViewDays.ItemsSource = xintakes;
-            TextBlockDate.Text = convertDate(date);
-
-            /*
-            //DatePickerDiary.Date = date;
-            App.CurrentDay = DayViewModel.GetDayByDate(date);
-            dayViewModel = App.CurrentDay;
-            GridDayTotal.DataContext = dayViewModel;
- 
-            TextBlockDate.Text = convertDate(date);
-            Intakes = new IntakesViewModel();
-            intks = Intakes.GetIntakesList(dayViewModel.Id);
-            ListViewDays.ItemsSource = intks;
-             * */
+            RefreshDay();
         }
 
         private string convertDate(DateTime date)
@@ -126,11 +116,41 @@ namespace CaloriesCounter
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
             Intake intake = (Intake)(sender as Button).DataContext;
-            await App.dataSource.Intakes.Delete(intake);
-           // changeDate(App.CurrentDay.Date);
+
+            try
+            {
+                App.Helper.deleteIntake(intake);
+            }
+
+            catch (ArgumentException)
+            {
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                string s = loader.GetString("DeleteError");
+                ShowError(s);
+            }
+
+            xintakes = null;
+            await App.dataSource.Days.Update(App.CurrentDay);
+            RefreshDay();
+            changeDate(App.CurrentDay.Date);
+
         }
 
-
+        /// <summary>
+        /// Shows error message in a messagedialog
+        /// </summary>
+        /// <param name="error"></param>
+        private async void ShowError(string error)
+        {
+            try
+            {
+                await new MessageDialog(error).ShowAsync();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                //TODO: do something
+            }
+        }
 
     }
 }

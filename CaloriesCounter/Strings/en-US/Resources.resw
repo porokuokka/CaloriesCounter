@@ -237,10 +237,13 @@
   <data name="ErrorRequired" xml:space="preserve">
     <value>Field is required</value>
   </data>
-  <data name="AddHelp.Text" xml:space="preserve">
+  <data name="AddingHelp.Text" xml:space="preserve">
     <value>Please use decimal point to separate the decimals!</value>
   </data>
   <data name="AddingInputError" xml:space="preserve">
     <value>Ingredient could not be added. Please fill in all the fields!</value>
+  </data>
+  <data name="DeleteError" xml:space="preserve">
+    <value>Deleting was not a success for some reason. Please try again!</value>
   </data>
 </root>
