@@ -29,6 +29,12 @@ namespace CaloriesCounter
         public CreateNewPage()
         {
             this.InitializeComponent();
+            this.Loaded += CreateNewPage_Loaded;
+            
+        }
+
+        void CreateNewPage_Loaded(object sender, RoutedEventArgs e)
+        {
             newItem = new Item();
             this.LayoutRoot.DataContext = newItem;
             this.GridNutrition.DataContext = newItem;
@@ -42,10 +48,12 @@ namespace CaloriesCounter
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            /*
             newItem = new Item();
             this.LayoutRoot.DataContext = newItem;
             this.GridNutrition.DataContext = newItem;
             this.GridPortion.DataContext = newItem;
+             * */
         }
 
         #region navigation

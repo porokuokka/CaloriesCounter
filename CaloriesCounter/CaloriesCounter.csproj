@@ -108,7 +108,6 @@
     <Compile Include="Data\RepoHelper.cs" />
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Data\Tests\DataUnitTests.cs" />
-    <Compile Include="LayoutAwarePage.cs" />
     <Compile Include="lib\sqlite_master.cs" />
     <Compile Include="CreateNewPage.xaml.cs">
       <DependentUpon>CreateNewPage.xaml</DependentUpon>

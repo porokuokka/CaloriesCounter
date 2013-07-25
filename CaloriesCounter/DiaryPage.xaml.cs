@@ -31,7 +31,12 @@ namespace CaloriesCounter
         public DiaryPage()
         {
             this.InitializeComponent();
+            this.Loaded += DiaryPage_Loaded;
+            
+        }
 
+        void DiaryPage_Loaded(object sender, RoutedEventArgs e)
+        {
             DatePickerDiary.Date = App.CurrentDay.Date;
             RefreshDay();
         }

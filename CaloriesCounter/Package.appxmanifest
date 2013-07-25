@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="48514Aarukka.Countem" Publisher="CN=8D72CB61-FBB0-45AB-B9A1-D5D834F2BA59" Version="1.0.0.7" />
+  <Identity Name="48514Aarukka.Countem" Publisher="CN=8D72CB61-FBB0-45AB-B9A1-D5D834F2BA59" Version="1.0.0.12" />
   <Properties>
     <DisplayName>Count 'em!</DisplayName>
     <PublisherDisplayName>Aarukka</PublisherDisplayName>
